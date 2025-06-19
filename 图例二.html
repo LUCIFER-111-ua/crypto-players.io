@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts-gl.min.js"></script>
+    <style>
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .home-button {
+            padding: 10px 20px;
+            background-color: #cc0800;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .home-button:hover {
+            background: linear-gradient(135deg, #cc0800, #99002a);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <div id="f975445cc965441996f4272cef443a3e" class="chart-container" style="width:1600px; height:800px; "></div>
+        <div class="button-container">
+            <button class="home-button"><a href="../主页/森林病虫害综合图表.html">总图</a></button>
+            <button class="home-button"><a href="../主页/index.html">回到首页</a></button>
+        </div>
+        <script>
+            var chart_f975445cc965441996f4272cef443a3e = echarts.init(
+                document.getElementById('f975445cc965441996f4272cef443a3e'), 'white', { renderer: 'canvas' });
+            var option_f975445cc965441996f4272cef443a3e = {
+                "animation": true,
+                "animationThreshold": 2000,
+                "animationDuration": 1000,
+                "animationEasing": "cubicOut",
+                "animationDelay": 0,
+                "animationDurationUpdate": 300,
+                "animationEasingUpdate": "cubicOut",
+                "animationDelayUpdate": 0,
+                "aria": {
+                    "enabled": false
+                },
+                "color": [
+                    "#5470c6",
+                    "#91cc75",
+                    "#fac858",
+                    "#ee6666",
+                    "#73c0de",
+                    "#3ba272",
+                    "#fc8452",
+                    "#9a60b4",
+                    "#ea7ccc"
+                ],
+                "series": [
+                    {
+                        "type": "bar3D",
+                        "name": "\u75c5\u866b\u5bb3\u7edf\u8ba1",
+                        "data": [
+                            [
+                                0,
+                                0,
+                                726.09
+                            ],
+                            [
+                                1,
+                                0,
+                                498.51
+                            ],
+                            [
+                                2,
+                                0,
+                                101.2
+                            ],
+                            [
+                                3,
+                                0,
+                                70.62
+                            ],
+                            [
+                                4,
+                                0,
+                                133.73
+                            ],
+                            [
+                                5,
+                                0,
+                                71.62
+                            ],
+                            [
+                                0,
+                                1,
+                                829.87
+                            ],
+                            [
+                                1,
+                                1,
+                                557.2
+                            ],
+                            [
+                                2,
+                                1,
+                                103.87
+                            ],
+                            [
+                                3,
+                                1,
+                                71.8
+                            ],
+                            [
+                                4,
+                                1,
+                                166.93
+                            ],
+                            [
+                                5,
+                                1,
+                                106.47
+                            ],
+                            [
+                                0,
+                                2,
+                                887.72
+                            ],
+                            [
+                                1,
+                                2,
+                                604.53
+                            ],
+                            [
+                                2,
+                                2,
+                                110.95
+                            ],
+                            [
+                                3,
+                                2,
+                                85.88
+                            ],
+                            [
+                                4,
+                                2,
+                                211.02
+                            ],
+                            [
+                                5,
+                                2,
+                                110.79
+                            ],
+                            [
+                                0,
+                                3,
+                                843.19
+                            ],
+                            [
+                                1,
+                                3,
+                                590.23
+                            ],
+                            [
+                                2,
+                                3,
+                                116.83
+                            ],
+                            [
+                                3,
+                                3,
+                                90.48
+                            ],
+                            [
+                                4,
+                                3,
+                                181.81
+                            ],
+                            [
+                                5,
+                                3,
+                                103.25
+                            ],
+                            [
+                                0,
+                                4,
+                                850.3
+                            ],
+                            [
+                                1,
+                                4,
+                                638.14
+                            ],
+                            [
+                                2,
+                                4,
+                                103.12
+                            ],
+                            [
+                                3,
+                                4,
+                                81.88
+                            ],
+                            [
+                                4,
+                                4,
+                                188.55
+                            ],
+                            [
+                                5,
+                                4,
+                                99.36
+                            ],
+                            [
+                                0,
+                                5,
+                                852.32
+                            ],
+                            [
+                                1,
+                                5,
+                                628.7
+                            ],
+                            [
+                                2,
+                                5,
+                                129.06
+                            ],
+                            [
+                                3,
+                                5,
+                                89.56
+                            ],
+                            [
+                                4,
+                                5,
+                                182.86
+                            ],
+                            [
+                                5,
+                                5,
+                                94.11
+                            ],
+                            [
+                                0,
+                                6,
+                                845.91
+                            ],
+                            [
+                                1,
+                                6,
+                                546.58
+                            ],
+                            [
+                                2,
+                                6,
+                                119.72
+                            ],
+                            [
+                                3,
+                                6,
+                                79.23
+                            ],
+                            [
+                                4,
+                                6,
+                                202.51
+                            ],
+                            [
+                                5,
+                                6,
+                                102.69
+                            ],
+                            [
+                                0,
+                                7,
+                                846.29
+                            ],
+                            [
+                                1,
+                                7,
+                                572.93
+                            ],
+                            [
+                                2,
+                                7,
+                                131.16
+                            ],
+                            [
+                                3,
+                                7,
+                                84.26
+                            ],
+                            [
+                                4,
+                                7,
+                                199.45
+                            ],
+                            [
+                                5,
+                                7,
+                                125.41
+                            ],
+                            [
+                                0,
+                                8,
+                                847.46
+                            ],
+                            [
+                                1,
+                                8,
+                                589.56
+                            ],
+                            [
+                                2,
+                                8,
+                                139.17
+                            ],
+                            [
+                                3,
+                                8,
+                                89.88
+                            ],
+                            [
+                                4,
+                                8,
+                                224.25
+                            ],
+                            [
+                                5,
+                                8,
+                                82.97
+                            ],
+                            [
+                                0,
+                                9,
+                                841.28
+                            ],
+                            [
+                                1,
+                                9,
+                                599.54
+                            ],
+                            [
+                                2,
+                                9,
+                                137.28
+                            ],
+                            [
+                                3,
+                                9,
+                                86.71
+                            ],
+                            [
+                                4,
+                                9,
+                                211.6
+                            ],
+                            [
+                                5,
+                                9,
+                                96.03
+                            ],
+                            [
+                                0,
+                                10,
+                                846.64
+                            ],
+                            [
+                                1,
+                                10,
+                                620.92
+                            ],
+                            [
+                                2,
+                                10,
+                                139.05
+                            ],
+                            [
+                                3,
+                                10,
+                                97.71
+                            ],
+                            [
+                                4,
+                                10,
+                                214.82
+                            ],
+                            [
+                                5,
+                                10,
+                                150.19
+                            ],
+                            [
+                                0,
+                                11,
+                                857.02
+                            ],
+                            [
+                                1,
+                                11,
+                                615.03
+                            ],
+                            [
+                                2,
+                                11,
+                                138.89
+                            ],
+                            [
+                                3,
+                                11,
+                                95.9
+                            ],
+                            [
+                                4,
+                                11,
+                                195.51
+                            ],
+                            [
+                                5,
+                                11,
+                                112.13
+                            ],
+                            [
+                                0,
+                                12,
+                                905.97
+                            ],
+                            [
+                                1,
+                                12,
+                                714.4
+                            ],
+                            [
+                                2,
+                                12,
+                                133.09
+                            ],
+                            [
+                                3,
+                                12,
+                                101.71
+                            ],
+                            [
+                                4,
+                                12,
+                                194.2
+                            ],
+                            [
+                                5,
+                                12,
+                                133.24
+                            ],
+                            [
+                                0,
+                                13,
+                                840.41
+                            ],
+                            [
+                                1,
+                                13,
+                                665.25
+                            ],
+                            [
+                                2,
+                                13,
+                                176.87
+                            ],
+                            [
+                                3,
+                                13,
+                                134.54
+                            ],
+                            [
+                                4,
+                                13,
+                                184.4
+                            ],
+                            [
+                                5,
+                                13,
+                                138.6
+                            ],
+                            [
+                                0,
+                                14,
+                                811.46
+                            ],
+                            [
+                                1,
+                                14,
+                                701.32
+                            ],
+                            [
+                                2,
+                                14,
+                                229.54
+                            ],
+                            [
+                                3,
+                                14,
+                                165.18
+                            ],
+                            [
+                                4,
+                                14,
+                                178.03
+                            ],
+                            [
+                                5,
+                                14,
+                                138.52
+                            ],
+                            [
+                                0,
+                                15,
+                                790.62
+                            ],
+                            [
+                                1,
+                                15,
+                                627.07
+                            ],
+                            [
+                                2,
+                                15,
+                                295.14
+                            ],
+                            [
+                                3,
+                                15,
+                                237.37
+                            ],
+                            [
+                                4,
+                                15,
+                                174.0
+                            ],
+                            [
+                                5,
+                                15,
+                                133.09
+                            ],
+                            [
+                                0,
+                                16,
+                                776.65
+                            ],
+                            [
+                                1,
+                                16,
+                                639.41
+                            ],
+                            [
+                                2,
+                                16,
+                                284.74
+                            ],
+                            [
+                                3,
+                                16,
+                                225.05
+                            ],
+                            [
+                                4,
+                                16,
+                                174.67
+                            ],
+                            [
+                                5,
+                                16,
+                                130.38
+                            ],
+                            [
+                                0,
+                                17,
+                                729.74
+                            ],
+                            [
+                                1,
+                                17,
+                                604.01
+                            ],
+                            [
+                                2,
+                                17,
+                                262.95
+                            ],
+                            [
+                                3,
+                                17,
+                                205.07
+                            ],
+                            [
+                                4,
+                                17,
+                                177.01
+                            ],
+                            [
+                                5,
+                                17,
+                                138.21
+                            ],
+                            [
+                                0,
+                                18,
+                                677.7
+                            ],
+                            [
+                                1,
+                                18,
+                                579.19
+                            ],
+                            [
+                                2,
+                                18,
+                                225.04
+                            ],
+                            [
+                                3,
+                                18,
+                                186.23
+                            ],
+                            [
+                                4,
+                                18,
+                                171.8
+                            ],
+                            [
+                                5,
+                                18,
+                                135.56
+                            ]
+                        ],
+                        "label": {
+                            "show": false,
+                            "margin": 8,
+                            "valueAnimation": false
+                        },
+                        "shading": "lambert",
+                        "grid3DIndex": 0
+                    }
+                ],
+                "legend": [
+                    {
+                        "data": [
+                            "\u75c5\u866b\u5bb3\u7edf\u8ba1"
+                        ],
+                        "selected": {},
+                        "show": true,
+                        "padding": 5,
+                        "itemGap": 10,
+                        "itemWidth": 25,
+                        "itemHeight": 14,
+                        "backgroundColor": "transparent",
+                        "borderColor": "#ccc",
+                        "borderRadius": 0,
+                        "pageButtonItemGap": 5,
+                        "pageButtonPosition": "end",
+                        "pageFormatter": "{current}/{total}",
+                        "pageIconColor": "#2f4554",
+                        "pageIconInactiveColor": "#aaa",
+                        "pageIconSize": 15,
+                        "animationDurationUpdate": 800,
+                        "selector": false,
+                        "selectorPosition": "auto",
+                        "selectorItemGap": 7,
+                        "selectorButtonGap": 10
+                    }
+                ],
+                "tooltip": {
+                    "show": true,
+                    "trigger": "item",
+                    "triggerOn": "mousemove|click",
+                    "axisPointer": {
+                        "type": "line"
+                    },
+                    "showContent": true,
+                    "alwaysShowContent": false,
+                    "showDelay": 0,
+                    "hideDelay": 100,
+                    "enterable": false,
+                    "confine": false,
+                    "appendToBody": false,
+                    "transitionDuration": 0.4,
+                    "textStyle": {
+                        "fontSize": 14
+                    },
+                    "borderWidth": 0,
+                    "padding": 5,
+                    "order": "seriesAsc"
+                },
+                "xAxis3D": {
+                    "data": [
+                        "\u866b\u5bb3\u53d1\u751f",
+                        "\u866b\u5bb3\u9632\u6cbb",
+                        "\u75c5\u5bb3\u53d1\u751f",
+                        "\u75c5\u5bb3\u9632\u6cbb",
+                        "\u9f20\u5bb3\u53d1\u751f",
+                        "\u9f20\u5bb3\u9632\u6cbb"
+                    ],
+                    "name": "\u6307\u6807\u7c7b\u578b",
+                    "show": true,
+                    "scale": false,
+                    "grid3DIndex": 0,
+                    "nameGap": 20,
+                    "logBase": 10,
+                    "type": "category",
+                    "splitLine": {
+                        "show": true,
+                        "lineStyle": {
+                            "show": true,
+                            "width": 1,
+                            "opacity": 1,
+                            "curveness": 0,
+                            "type": "solid"
+                        }
+                    }
+                },
+                "yAxis3D": {
+                    "data": [
+                        "2005",
+                        "2006",
+                        "2007",
+                        "2008",
+                        "2009",
+                        "2010",
+                        "2011",
+                        "2012",
+                        "2013",
+                        "2014",
+                        "2015",
+                        "2016",
+                        "2017",
+                        "2018",
+                        "2019",
+                        "2020",
+                        "2021",
+                        "2022",
+                        "2023"
+                    ],
+                    "name": "\u5e74\u4efd",
+                    "show": true,
+                    "scale": false,
+                    "grid3DIndex": 0,
+                    "nameGap": 20,
+                    "logBase": 10,
+                    "type": "category",
+                    "splitLine": {
+                        "show": true,
+                        "lineStyle": {
+                            "show": true,
+                            "width": 1,
+                            "opacity": 1,
+                            "curveness": 0,
+                            "type": "solid"
+                        }
+                    }
+                },
+                "zAxis3D": {
+                    "name": "\u9762\u79ef(\u4e07\u516c\u9877)",
+                    "show": true,
+                    "scale": false,
+                    "grid3DIndex": 0,
+                    "nameGap": 20,
+                    "logBase": 10,
+                    "type": "value",
+                    "splitLine": {
+                        "show": true,
+                        "lineStyle": {
+                            "show": true,
+                            "width": 1,
+                            "opacity": 1,
+                            "curveness": 0,
+                            "type": "solid"
+                        }
+                    }
+                },
+                "grid3D": {
+                    "boxWidth": 200,
+                    "boxHeight": 100,
+                    "boxDepth": 80,
+                    "splitLine": {
+                        "show": true,
+                        "lineStyle": {
+                            "show": true,
+                            "width": 1,
+                            "opacity": 1,
+                            "curveness": 0,
+                            "type": "solid"
+                        }
+                    },
+                    "environment": "auto",
+                    "viewControl": {
+                        "autoRotate": false,
+                        "autoRotateSpeed": 10,
+                        "rotateSensitivity": 1,
+                        "alpha": 20,
+                        "beta": 40,
+                        "minAlpha": -90,
+                        "maxAlpha": 90
+                    },
+                    "zlevel": -10,
+                    "left": "auto",
+                    "top": "auto",
+                    "right": "auto",
+                    "bottom": "auto"
+                },
+                "title": [
+                    {
+                        "show": true,
+                        "text": "\u68ee\u6797\u75c5\u866b\u5bb3\u7edf\u8ba1(3D\u89c6\u56fe)",
+                        "target": "blank",
+                        "subtarget": "blank",
+                        "padding": 5,
+                        "itemGap": 10,
+                        "textAlign": "auto",
+                        "textVerticalAlign": "auto",
+                        "triggerEvent": false
+                    }
+                ],
+                "visualMap": {
+                    "show": true,
+                    "type": "continuous",
+                    "min": 0,
+                    "max": 905.97,
+                    "inRange": {
+                        "color": [
+                            "#313695",
+                            "#4575b4",
+                            "#74add1",
+                            "#abd9e9",
+                            "#e0f3f8",
+                            "#ffffbf",
+                            "#fee090",
+                            "#fdae61",
+                            "#f46d43",
+                            "#d73027",
+                            "#a50026"
+                        ]
+                    },
+                    "calculable": true,
+                    "inverse": false,
+                    "splitNumber": 5,
+                    "hoverLink": true,
+                    "orient": "vertical",
+                    "padding": 5,
+                    "showLabel": true,
+                    "itemWidth": 20,
+                    "itemHeight": 140,
+                    "borderWidth": 0
+                }
+            };
+            chart_f975445cc965441996f4272cef443a3e.setOption(option_f975445cc965441996f4272cef443a3e);
+        </script>
+        <br />
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
