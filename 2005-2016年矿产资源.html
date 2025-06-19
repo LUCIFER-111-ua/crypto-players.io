@@ -1,0 +1,3114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
+    <style>
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .home-button {
+            padding: 10px 20px;
+            background-color: #cc0800;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .home-button:hover {
+            background: linear-gradient(135deg, #cc0800, #99002a);
+        }
+    </style>
+
+</head>
+
+<body>
+    <style>
+        .box {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+    <div class="box">
+        <div id="af954be8dc2d4b4fae44451f84ba6dc0" class="chart-container" style="width:1600px; height:1000px; "></div>
+        <div class="button-container">
+            <button class="home-button"><a href="../wzw/图例一.html">第一张图</a></button>
+            <button class="home-button"><a href="../wzw/图例二.html">第二张图</a></button>
+            <button class="home-button"><a href="../wzw/图例三.html">第三张图</a></button>
+            <button class="home-button"><a href="../主页/index.html">回到首页</a></button>
+        </div>
+        <script>
+            var chart_af954be8dc2d4b4fae44451f84ba6dc0 = echarts.init(
+                document.getElementById('af954be8dc2d4b4fae44451f84ba6dc0'), 'white', { renderer: 'canvas' });
+            var option_af954be8dc2d4b4fae44451f84ba6dc0 = {
+                "animation": true,
+                "animationThreshold": 2000,
+                "animationDuration": 1000,
+                "animationEasing": "cubicOut",
+                "animationDelay": 0,
+                "animationDurationUpdate": 300,
+                "animationEasingUpdate": "cubicOut",
+                "animationDelayUpdate": 0,
+                "aria": {
+                    "enabled": false
+                },
+                "color": [
+                    "#5470c6",
+                    "#91cc75",
+                    "#fac858",
+                    "#ee6666",
+                    "#73c0de",
+                    "#3ba272",
+                    "#fc8452",
+                    "#9a60b4",
+                    "#ea7ccc"
+                ],
+                "series": [
+                    {
+                        "type": "bar",
+                        "name": "\u6cbb\u7406\u5176\u4ed6\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                        "legendHoverLink": true,
+                        "data": [
+                            1145251,
+                            1019974,
+                            1448676,
+                            1442119,
+                            1590616,
+                            1364540,
+                            728094,
+                            431118,
+                            647674
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "30%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": true,
+                            "position": "top",
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    },
+                    {
+                        "type": "bar",
+                        "name": "\u6cbb\u7406\u5e9f\u6c14\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                        "legendHoverLink": true,
+                        "data": [
+                            5218073,
+                            5614702,
+                            4462628,
+                            3931104,
+                            3676995,
+                            2423725,
+                            2220982,
+                            1984251,
+                            2043227
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "30%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": true,
+                            "position": "top",
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    },
+                    {
+                        "type": "bar",
+                        "name": "\u5de5\u4e1a\u6c61\u67d3\u6cbb\u7406\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                        "legendHoverLink": true,
+                        "data": [
+                            7736822,
+                            8190041,
+                            6815345,
+                            6212736,
+                            6151513,
+                            4542586,
+                            3352364,
+                            2857077,
+                            3624239
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "30%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": true,
+                            "position": "top",
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    },
+                    {
+                        "type": "bar",
+                        "name": "\u6cbb\u7406\u5e9f\u6c34\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                        "legendHoverLink": true,
+                        "data": [
+                            1184138,
+                            1082395,
+                            763760,
+                            640082,
+                            699004,
+                            573852,
+                            361241,
+                            377220,
+                            809614
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "30%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": true,
+                            "position": "top",
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    },
+                    {
+                        "type": "bar",
+                        "name": "\u6cbb\u7406\u56fa\u4f53\u5e9f\u7269\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                        "legendHoverLink": true,
+                        "data": [
+                            161468,
+                            466733,
+                            127419,
+                            184249,
+                            170729,
+                            173064,
+                            36611,
+                            60275,
+                            118405
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "30%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": true,
+                            "position": "top",
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    }
+                ],
+                "legend": [
+                    {
+                        "data": [
+                            "\u6cbb\u7406\u5176\u4ed6\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                            "\u6cbb\u7406\u5e9f\u6c14\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                            "\u5de5\u4e1a\u6c61\u67d3\u6cbb\u7406\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                            "\u6cbb\u7406\u5e9f\u6c34\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)",
+                            "\u6cbb\u7406\u56fa\u4f53\u5e9f\u7269\u9879\u76ee\u5b8c\u6210\u6295\u8d44(\u4e07\u5143)"
+                        ],
+                        "selected": {},
+                        "show": true,
+                        "left": "70%",
+                        "padding": 5,
+                        "itemGap": 10,
+                        "itemWidth": 25,
+                        "itemHeight": 14,
+                        "backgroundColor": "transparent",
+                        "borderColor": "#ccc",
+                        "borderRadius": 0,
+                        "pageButtonItemGap": 5,
+                        "pageButtonPosition": "end",
+                        "pageFormatter": "{current}/{total}",
+                        "pageIconColor": "#2f4554",
+                        "pageIconInactiveColor": "#aaa",
+                        "pageIconSize": 15,
+                        "animationDurationUpdate": 800,
+                        "selector": false,
+                        "selectorPosition": "auto",
+                        "selectorItemGap": 7,
+                        "selectorButtonGap": 10
+                    }
+                ],
+                "tooltip": {
+                    "show": true,
+                    "trigger": "item",
+                    "triggerOn": "mousemove|click",
+                    "axisPointer": {
+                        "type": "line"
+                    },
+                    "showContent": true,
+                    "alwaysShowContent": false,
+                    "showDelay": 0,
+                    "hideDelay": 100,
+                    "enterable": false,
+                    "confine": false,
+                    "appendToBody": false,
+                    "transitionDuration": 0.4,
+                    "textStyle": {
+                        "fontSize": 14
+                    },
+                    "borderWidth": 0,
+                    "padding": 5,
+                    "order": "seriesAsc"
+                },
+                "xAxis": [
+                    {
+                        "name": "\u65f6\u95f4",
+                        "show": true,
+                        "scale": false,
+                        "nameLocation": "end",
+                        "nameGap": 15,
+                        "gridIndex": 0,
+                        "inverse": false,
+                        "offset": 0,
+                        "splitNumber": 5,
+                        "minInterval": 0,
+                        "splitLine": {
+                            "show": true,
+                            "lineStyle": {
+                                "show": true,
+                                "width": 1,
+                                "opacity": 1,
+                                "curveness": 0,
+                                "type": "solid"
+                            }
+                        },
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0,
+                        "data": [
+                            "2015",
+                            "2016",
+                            "2017",
+                            "2018",
+                            "2019",
+                            "2020",
+                            "2021",
+                            "2022",
+                            "2023"
+                        ]
+                    }
+                ],
+                "yAxis": [
+                    {
+                        "show": true,
+                        "scale": false,
+                        "nameLocation": "end",
+                        "nameGap": 15,
+                        "gridIndex": 0,
+                        "inverse": false,
+                        "offset": 0,
+                        "splitNumber": 5,
+                        "minInterval": 0,
+                        "splitLine": {
+                            "show": true,
+                            "lineStyle": {
+                                "show": true,
+                                "width": 1,
+                                "opacity": 1,
+                                "curveness": 0,
+                                "type": "solid"
+                            }
+                        },
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0
+                    }
+                ],
+                "title": [
+                    {
+                        "show": true,
+                        "target": "blank",
+                        "subtarget": "blank",
+                        "left": "center",
+                        "top": "1%",
+                        "padding": 5,
+                        "itemGap": 10,
+                        "textAlign": "auto",
+                        "textVerticalAlign": "auto",
+                        "triggerEvent": false
+                    }
+                ],
+                "dataZoom": {
+                    "show": true,
+                    "type": "slider",
+                    "showDetail": true,
+                    "showDataShadow": true,
+                    "realtime": true,
+                    "start": 20,
+                    "end": 80,
+                    "orient": "horizontal",
+                    "zoomLock": false,
+                    "filterMode": "filter"
+                }
+            };
+            chart_af954be8dc2d4b4fae44451f84ba6dc0.setOption(option_af954be8dc2d4b4fae44451f84ba6dc0);
+        </script>
+        <br />
+        <div id="9f2222b5f25c4ecab2d1db609e6d6f37" class="chart-container" style="width:1600px; height:1000px; "></div>
+        <script>
+            var chart_9f2222b5f25c4ecab2d1db609e6d6f37 = echarts.init(
+                document.getElementById('9f2222b5f25c4ecab2d1db609e6d6f37'), 'white', { renderer: 'canvas' });
+            var option_9f2222b5f25c4ecab2d1db609e6d6f37 = {
+                "animation": true,
+                "animationThreshold": 2000,
+                "animationDuration": 1000,
+                "animationEasing": "cubicOut",
+                "animationDelay": 0,
+                "animationDurationUpdate": 300,
+                "animationEasingUpdate": "cubicOut",
+                "animationDelayUpdate": 0,
+                "aria": {
+                    "enabled": false
+                },
+                "color": [
+                    "#5470c6",
+                    "#91cc75",
+                    "#fac858",
+                    "#ee6666",
+                    "#73c0de",
+                    "#3ba272",
+                    "#fc8452",
+                    "#9a60b4",
+                    "#ea7ccc"
+                ],
+                "series": [
+                    {
+                        "type": "line",
+                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                        "connectNulls": false,
+                        "xAxisIndex": 0,
+                        "symbolSize": 10,
+                        "showSymbol": true,
+                        "smooth": false,
+                        "clip": true,
+                        "step": false,
+                        "stackStrategy": "samesign",
+                        "data": [
+                            [
+                                "2005",
+                                28185.4
+                            ],
+                            [
+                                "2006",
+                                30009.2
+                            ],
+                            [
+                                "2007",
+                                32123.6
+                            ],
+                            [
+                                "2008",
+                                34049.6
+                            ],
+                            [
+                                "2009",
+                                37074.2
+                            ],
+                            [
+                                "2010",
+                                37793.2
+                            ],
+                            [
+                                "2011",
+                                40206.4
+                            ],
+                            [
+                                "2012",
+                                43789.9
+                            ],
+                            [
+                                "2013",
+                                46428.8
+                            ],
+                            [
+                                "2014",
+                                49451.8
+                            ],
+                            [
+                                "2015",
+                                51939.5
+                            ],
+                            [
+                                "2016",
+                                54365.5
+                            ]
+                        ],
+                        "hoverAnimation": true,
+                        "label": {
+                            "show": true,
+                            "margin": 8,
+                            "valueAnimation": false
+                        },
+                        "logBase": 10,
+                        "seriesLayoutBy": "column",
+                        "lineStyle": {
+                            "show": true,
+                            "width": 2,
+                            "opacity": 1,
+                            "curveness": 0,
+                            "type": "solid"
+                        },
+                        "areaStyle": {
+                            "opacity": 0
+                        },
+                        "zlevel": 0,
+                        "z": 0
+                    }
+                ],
+                "legend": [
+                    {
+                        "data": [
+                            "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)"
+                        ],
+                        "selected": {},
+                        "show": true,
+                        "left": "70%",
+                        "padding": 5,
+                        "itemGap": 10,
+                        "itemWidth": 25,
+                        "itemHeight": 14,
+                        "backgroundColor": "transparent",
+                        "borderColor": "#ccc",
+                        "borderRadius": 0,
+                        "pageButtonItemGap": 5,
+                        "pageButtonPosition": "end",
+                        "pageFormatter": "{current}/{total}",
+                        "pageIconColor": "#2f4554",
+                        "pageIconInactiveColor": "#aaa",
+                        "pageIconSize": 15,
+                        "animationDurationUpdate": 800,
+                        "selector": false,
+                        "selectorPosition": "auto",
+                        "selectorItemGap": 7,
+                        "selectorButtonGap": 10
+                    }
+                ],
+                "tooltip": {
+                    "show": true,
+                    "trigger": "item",
+                    "triggerOn": "mousemove|click",
+                    "axisPointer": {
+                        "type": "line"
+                    },
+                    "showContent": true,
+                    "alwaysShowContent": false,
+                    "showDelay": 0,
+                    "hideDelay": 100,
+                    "enterable": false,
+                    "confine": false,
+                    "appendToBody": false,
+                    "transitionDuration": 0.4,
+                    "textStyle": {
+                        "fontSize": 14
+                    },
+                    "borderWidth": 0,
+                    "padding": 5,
+                    "order": "seriesAsc"
+                },
+                "xAxis": [
+                    {
+                        "name": "\u65f6\u95f4",
+                        "show": true,
+                        "scale": false,
+                        "nameLocation": "end",
+                        "nameGap": 15,
+                        "gridIndex": 0,
+                        "inverse": false,
+                        "offset": 0,
+                        "splitNumber": 5,
+                        "minInterval": 0,
+                        "splitLine": {
+                            "show": true,
+                            "lineStyle": {
+                                "show": true,
+                                "width": 1,
+                                "opacity": 1,
+                                "curveness": 0,
+                                "type": "solid"
+                            }
+                        },
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0,
+                        "data": [
+                            "2005",
+                            "2006",
+                            "2007",
+                            "2008",
+                            "2009",
+                            "2010",
+                            "2011",
+                            "2012",
+                            "2013",
+                            "2014",
+                            "2015",
+                            "2016"
+                        ]
+                    }
+                ],
+                "yAxis": [
+                    {
+                        "name": "\u50a8\u91cf",
+                        "show": true,
+                        "scale": false,
+                        "nameLocation": "end",
+                        "nameGap": 15,
+                        "gridIndex": 0,
+                        "inverse": false,
+                        "offset": 0,
+                        "splitNumber": 5,
+                        "minInterval": 0,
+                        "splitLine": {
+                            "show": true,
+                            "lineStyle": {
+                                "show": true,
+                                "width": 1,
+                                "opacity": 1,
+                                "curveness": 0,
+                                "type": "solid"
+                            }
+                        },
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0
+                    }
+                ],
+                "title": [
+                    {
+                        "show": true,
+                        "text": "2005-2016\u5e74\u5929\u7136\u6c14\u50a8\u91cf",
+                        "target": "blank",
+                        "subtarget": "blank",
+                        "left": "center",
+                        "top": "1%",
+                        "padding": 5,
+                        "itemGap": 10,
+                        "textAlign": "auto",
+                        "textVerticalAlign": "auto",
+                        "triggerEvent": false
+                    }
+                ],
+                "dataZoom": {
+                    "show": true,
+                    "type": "slider",
+                    "showDetail": true,
+                    "showDataShadow": true,
+                    "realtime": true,
+                    "start": 20,
+                    "end": 80,
+                    "orient": "horizontal",
+                    "zoomLock": false,
+                    "filterMode": "filter"
+                }
+            };
+            chart_9f2222b5f25c4ecab2d1db609e6d6f37.setOption(option_9f2222b5f25c4ecab2d1db609e6d6f37);
+        </script>
+        <br />
+        <div id="19a1785ed1874c83a2a662cba7835185" class="chart-container" style="width:1200px; height:800px; "></div>
+        <script>
+            var chart_19a1785ed1874c83a2a662cba7835185 = echarts.init(
+                document.getElementById('19a1785ed1874c83a2a662cba7835185'), 'light', { renderer: 'canvas' });
+            var option_19a1785ed1874c83a2a662cba7835185 = {
+                "baseOption": {
+                    "series": [
+                        {
+                            "type": "funnel",
+                            "data": [
+                                {
+                                    "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 277.4
+                                },
+                                {
+                                    "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 31033.6
+                                },
+                                {
+                                    "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 4439.1
+                                },
+                                {
+                                    "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 407.2
+                                },
+                                {
+                                    "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 100955.3
+                                },
+                                {
+                                    "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 2621.0
+                                },
+                                {
+                                    "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 1808.6
+                                },
+                                {
+                                    "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 201200.0
+                                },
+                                {
+                                    "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 951.8
+                                },
+                                {
+                                    "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 350120.3
+                                },
+                                {
+                                    "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 2492300.0
+                                },
+                                {
+                                    "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "value": 23065.1
+                                }
+                            ],
+                            "min": 0,
+                            "max": 100,
+                            "minSize": "0%",
+                            "maxSize": "100%",
+                            "orient": "vertical",
+                            "sort": "descending",
+                            "gap": 2,
+                            "legendHoverLink": true,
+                            "funnelAlign": "center",
+                            "label": {
+                                "show": true,
+                                "position": "inside",
+                                "margin": 8,
+                                "valueAnimation": false
+                            },
+                            "tooltip": {
+                                "show": true,
+                                "trigger": "item",
+                                "triggerOn": "mousemove|click",
+                                "axisPointer": {
+                                    "type": "line"
+                                },
+                                "showContent": true,
+                                "alwaysShowContent": false,
+                                "showDelay": 0,
+                                "hideDelay": 100,
+                                "enterable": false,
+                                "confine": false,
+                                "appendToBody": false,
+                                "transitionDuration": 0.4,
+                                "formatter": "{a}<br>{b}:{c}%",
+                                "textStyle": {
+                                    "fontSize": 14
+                                },
+                                "borderWidth": 0,
+                                "padding": 5,
+                                "order": "seriesAsc"
+                            },
+                            "itemStyle": {
+                                "borderColor": "#fff",
+                                "borderWidth": 1
+                            },
+                            "selectedMode": false,
+                            "zlevel": 0,
+                            "z": 2
+                        }
+                    ],
+                    "timeline": {
+                        "axisType": "category",
+                        "currentIndex": 0,
+                        "orient": "horizontal",
+                        "autoPlay": true,
+                        "controlPosition": "left",
+                        "loop": true,
+                        "rewind": false,
+                        "show": true,
+                        "inverse": false,
+                        "playInterval": 1000,
+                        "bottom": "-5px",
+                        "progress": {},
+                        "data": [
+                            "2005",
+                            "2006",
+                            "2007",
+                            "2008",
+                            "2009",
+                            "2010",
+                            "2011",
+                            "2012",
+                            "2013",
+                            "2014",
+                            "2015",
+                            "2016"
+                        ]
+                    },
+                    "legend": [
+                        {
+                            "data": [
+                                "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                            ],
+                            "selected": {},
+                            "show": true,
+                            "padding": 5,
+                            "itemGap": 10,
+                            "itemWidth": 25,
+                            "itemHeight": 14,
+                            "backgroundColor": "transparent",
+                            "borderColor": "#ccc",
+                            "borderRadius": 0,
+                            "pageButtonItemGap": 5,
+                            "pageButtonPosition": "end",
+                            "pageFormatter": "{current}/{total}",
+                            "pageIconColor": "#2f4554",
+                            "pageIconInactiveColor": "#aaa",
+                            "pageIconSize": 15,
+                            "animationDurationUpdate": 800,
+                            "selector": false,
+                            "selectorPosition": "auto",
+                            "selectorItemGap": 7,
+                            "selectorButtonGap": 10
+                        }
+                    ]
+                },
+                "options": [
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 270.7
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21539.9
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 4269.1
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 521.0
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 73057.8
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2856.4
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1393.4
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 216000.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1323.5
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 248972.1
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3326400.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21410.4
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94a8\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 272.7
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 22855.8
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 4227.1
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 521.4
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 74167.0
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3069.9
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1351.4
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 220900.0
+                                    },
+                                    {
+                                        "name": "\u94a8\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 241.4
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1404.4
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 275856.8
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3334800.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21379.5
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 299.2
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 22443.7
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 4250.3
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 582.2
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 75072.7
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2932.1
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1345.9
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 223600.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1309.4
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 283253.8
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3261300.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 22541.9
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 286.6
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 23439.5
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 4281.7
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 577.1
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 73514.0
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2891.0
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1359.6
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 226400.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1276.6
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 289043.0
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3261400.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 23294.5
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 281.8
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 18576.6
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3838.5
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 522.5
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 83923.9
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2951.0
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1340.1
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 213000.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1258.9
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 294919.8
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3189600.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 23291.4
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 312.1
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 19515.6
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3251.4
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 442.1
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 89732.7
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2870.7
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1272.0
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 222000.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1242.6
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 317435.3
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2793900.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 23043.0
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 272.0
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 18240.9
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3124.4
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 413.3
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 105064.3
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2812.4
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1291.7
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 192800.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1230.6
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 323967.9
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2157900.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 24585.4
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 260.9
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 20938.2
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3490.7
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 405.0
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 90590.0
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2734.4
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1454.7
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 194800.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 877.5
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 333258.3
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2298900.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21088.2
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 253.5
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21547.7
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 3766.2
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 401.5
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 98323.5
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2751.5
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1577.9
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 199200.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 909.9
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 336732.8
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2362900.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21957.0
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 253.0
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21415.4
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 4034.1
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 419.8
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 98321.9
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2836.4
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1720.8
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 206600.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 900.2
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 343335.0
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2399900.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21611.2
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 287.3
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 27626.2
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 4102.7
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 419.8
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 99758.2
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2721.8
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1738.8
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 207600.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 887.3
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 349610.7
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2440100.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 21434.0
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    },
+                    {
+                        "legend": [
+                            {
+                                "data": [
+                                    "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                    "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)"
+                                ],
+                                "selected": {},
+                                "show": true,
+                                "padding": 5,
+                                "itemGap": 10,
+                                "itemWidth": 25,
+                                "itemHeight": 14,
+                                "backgroundColor": "transparent",
+                                "borderColor": "#ccc",
+                                "borderRadius": 0,
+                                "pageButtonItemGap": 5,
+                                "pageButtonPosition": "end",
+                                "pageFormatter": "{current}/{total}",
+                                "pageIconColor": "#2f4554",
+                                "pageIconInactiveColor": "#aaa",
+                                "pageIconSize": 15,
+                                "animationDurationUpdate": 800,
+                                "selector": false,
+                                "selectorPosition": "auto",
+                                "selectorItemGap": 7,
+                                "selectorButtonGap": 10
+                            }
+                        ],
+                        "series": [
+                            {
+                                "type": "funnel",
+                                "data": [
+                                    {
+                                        "name": "\u954d\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 277.4
+                                    },
+                                    {
+                                        "name": "\u9530\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 31033.6
+                                    },
+                                    {
+                                        "name": "\u950c\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 4439.1
+                                    },
+                                    {
+                                        "name": "\u94ec\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 407.2
+                                    },
+                                    {
+                                        "name": "\u94dd\u571f\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 100955.3
+                                    },
+                                    {
+                                        "name": "\u94dc\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2621.0
+                                    },
+                                    {
+                                        "name": "\u94c5\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 1808.6
+                                    },
+                                    {
+                                        "name": "\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 201200.0
+                                    },
+                                    {
+                                        "name": "\u9492\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 951.8
+                                    },
+                                    {
+                                        "name": "\u77f3\u6cb9\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 350120.3
+                                    },
+                                    {
+                                        "name": "\u7164\u70ad\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 2492300.0
+                                    },
+                                    {
+                                        "name": "\u539f\u751f\u949b\u94c1\u77ff\u50a8\u91cf(\u4e07\u5428)",
+                                        "value": 23065.1
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 100,
+                                "minSize": "0%",
+                                "maxSize": "100%",
+                                "orient": "vertical",
+                                "sort": "descending",
+                                "gap": 2,
+                                "legendHoverLink": true,
+                                "funnelAlign": "center",
+                                "label": {
+                                    "show": true,
+                                    "position": "inside",
+                                    "margin": 8,
+                                    "valueAnimation": false
+                                },
+                                "tooltip": {
+                                    "show": true,
+                                    "trigger": "item",
+                                    "triggerOn": "mousemove|click",
+                                    "axisPointer": {
+                                        "type": "line"
+                                    },
+                                    "showContent": true,
+                                    "alwaysShowContent": false,
+                                    "showDelay": 0,
+                                    "hideDelay": 100,
+                                    "enterable": false,
+                                    "confine": false,
+                                    "appendToBody": false,
+                                    "transitionDuration": 0.4,
+                                    "formatter": "{a}<br>{b}:{c}%",
+                                    "textStyle": {
+                                        "fontSize": 14
+                                    },
+                                    "borderWidth": 0,
+                                    "padding": 5,
+                                    "order": "seriesAsc"
+                                },
+                                "itemStyle": {
+                                    "borderColor": "#fff",
+                                    "borderWidth": 1
+                                },
+                                "selectedMode": false,
+                                "zlevel": 0,
+                                "z": 2
+                            }
+                        ],
+                        "title": [
+                            {
+                                "show": true,
+                                "text": "2005-2016\u5e74\u5404\u77ff\u4ea7\u50a8\u91cf",
+                                "target": "blank",
+                                "subtarget": "blank",
+                                "padding": 5,
+                                "itemGap": 10,
+                                "textAlign": "auto",
+                                "textVerticalAlign": "auto",
+                                "triggerEvent": false
+                            }
+                        ],
+                        "tooltip": {
+                            "show": true,
+                            "trigger": "item",
+                            "triggerOn": "mousemove|click",
+                            "axisPointer": {
+                                "type": "line"
+                            },
+                            "showContent": true,
+                            "alwaysShowContent": false,
+                            "showDelay": 0,
+                            "hideDelay": 100,
+                            "enterable": false,
+                            "confine": false,
+                            "appendToBody": false,
+                            "transitionDuration": 0.4,
+                            "textStyle": {
+                                "fontSize": 14
+                            },
+                            "borderWidth": 0,
+                            "padding": 5,
+                            "order": "seriesAsc"
+                        },
+                        "color": [
+                            "#5470c6",
+                            "#91cc75",
+                            "#fac858",
+                            "#ee6666",
+                            "#73c0de",
+                            "#3ba272",
+                            "#fc8452",
+                            "#9a60b4",
+                            "#ea7ccc"
+                        ]
+                    }
+                ]
+            };
+            chart_19a1785ed1874c83a2a662cba7835185.setOption(option_19a1785ed1874c83a2a662cba7835185);
+        </script>
+        <br />
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
