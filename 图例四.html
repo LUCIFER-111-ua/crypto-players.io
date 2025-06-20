@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
+    <style>
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .home-button {
+            padding: 10px 20px;
+            background-color: #cc0800;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .home-button:hover {
+            background: linear-gradient(135deg, #cc0800, #99002a);
+        }
+    </style>
+
+</head>
+
+<body>
+    <style>
+        .box {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+    <div class="box">
+        <div id="498068209131424bb92bb9d4d8e4a1b3" class="chart-container" style="width:1000px; height:500px; "></div>
+        <div class="button-container">
+        <button class="home-button"><a href="../mian/自然灾害.html">总图</a></button>
+        <button class="home-button"><a href="../mian/index.html">回到首页</a></button>
+    </div>
+        <script>
+            var chart_498068209131424bb92bb9d4d8e4a1b3 = echarts.init(
+                document.getElementById('498068209131424bb92bb9d4d8e4a1b3'), 'white', { renderer: 'canvas' });
+            var option_498068209131424bb92bb9d4d8e4a1b3 = {
+                "animation": true,
+                "animationThreshold": 2000,
+                "animationDuration": 1000,
+                "animationEasing": "cubicOut",
+                "animationDelay": 0,
+                "animationDurationUpdate": 300,
+                "animationEasingUpdate": "cubicOut",
+                "animationDelayUpdate": 0,
+                "aria": {
+                    "enabled": false
+                },
+                "color": [
+                    "#EE6666",
+                    "#91CC75",
+                    "#FAC858",
+                    "#5470C6",
+                    "#5470c6",
+                    "#91cc75",
+                    "#fac858",
+                    "#ee6666",
+                    "#73c0de",
+                    "#3ba272",
+                    "#fc8452",
+                    "#9a60b4",
+                    "#ea7ccc"
+                ],
+                "series": [
+                    {
+                        "type": "bar",
+                        "name": "\u65f1\u707e",
+                        "legendHoverLink": true,
+                        "data": [
+                            2672.3,
+                            1505.4,
+                            374,
+                            1416.1,
+                            1484.7,
+                            1046.1,
+                            1018.3,
+                            752.4,
+                            922.4,
+                            1113.6,
+                            704.5,
+                            464.1,
+                            611.8,
+                            0,
+                            0
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barWidth": 15,
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "25%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": false,
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    },
+                    {
+                        "type": "bar",
+                        "name": "\u6d2a\u6d9d\u53f0\u98ce",
+                        "legendHoverLink": true,
+                        "data": [
+                            1669.9,
+                            872.8,
+                            1095.3,
+                            1828.9,
+                            976.9,
+                            841,
+                            1442.4,
+                            766.1,
+                            1009.9,
+                            1480.8,
+                            1498,
+                            918.4,
+                            505.2,
+                            0,
+                            0
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barWidth": 15,
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "25%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": false,
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    },
+                    {
+                        "type": "bar",
+                        "name": "\u98ce\u96f9",
+                        "legendHoverLink": true,
+                        "data": [
+                            280.3,
+                            302.4,
+                            213.4,
+                            412.4,
+                            457.7,
+                            309.1,
+                            268.8,
+                            225.2,
+                            196.6,
+                            171.4,
+                            290.8,
+                            205.7,
+                            175.1,
+                            0,
+                            0
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barWidth": 15,
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "25%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": false,
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    },
+                    {
+                        "type": "bar",
+                        "name": "\u4f4e\u6e29\u96ea\u707e",
+                        "legendHoverLink": true,
+                        "data": [
+                            240.7,
+                            211.1,
+                            142.9,
+                            180.7,
+                            168.2,
+                            36.5,
+                            172.7,
+                            83,
+                            456.1,
+                            36.2,
+                            212.7,
+                            44.4,
+                            59.3,
+                            0,
+                            0
+                        ],
+                        "realtimeSort": false,
+                        "showBackground": false,
+                        "stackStrategy": "samesign",
+                        "cursor": "pointer",
+                        "barWidth": 15,
+                        "barMinHeight": 0,
+                        "barCategoryGap": "20%",
+                        "barGap": "25%",
+                        "large": false,
+                        "largeThreshold": 400,
+                        "seriesLayoutBy": "column",
+                        "datasetIndex": 0,
+                        "clip": true,
+                        "zlevel": 0,
+                        "z": 2,
+                        "label": {
+                            "show": false,
+                            "margin": 8,
+                            "valueAnimation": false
+                        }
+                    }
+                ],
+                "legend": [
+                    {
+                        "data": [
+                            "\u65f1\u707e",
+                            "\u6d2a\u6d9d\u53f0\u98ce",
+                            "\u98ce\u96f9",
+                            "\u4f4e\u6e29\u96ea\u707e"
+                        ],
+                        "selected": {},
+                        "type": "scroll",
+                        "show": true,
+                        "top": "8%",
+                        "orient": "horizontal",
+                        "padding": 5,
+                        "itemGap": 10,
+                        "itemWidth": 25,
+                        "itemHeight": 14,
+                        "backgroundColor": "transparent",
+                        "borderColor": "#ccc",
+                        "borderRadius": 0,
+                        "pageButtonItemGap": 5,
+                        "pageButtonPosition": "end",
+                        "pageFormatter": "{current}/{total}",
+                        "pageIconColor": "#2f4554",
+                        "pageIconInactiveColor": "#aaa",
+                        "pageIconSize": 15,
+                        "animationDurationUpdate": 800,
+                        "selector": false,
+                        "selectorPosition": "auto",
+                        "selectorItemGap": 7,
+                        "selectorButtonGap": 10
+                    }
+                ],
+                "tooltip": {
+                    "show": true,
+                    "trigger": "axis",
+                    "triggerOn": "mousemove|click",
+                    "axisPointer": {
+                        "type": "shadow"
+                    },
+                    "showContent": true,
+                    "alwaysShowContent": false,
+                    "showDelay": 0,
+                    "hideDelay": 100,
+                    "enterable": false,
+                    "confine": false,
+                    "appendToBody": false,
+                    "transitionDuration": 0.4,
+                    "textStyle": {
+                        "fontSize": 14
+                    },
+                    "borderWidth": 0,
+                    "padding": 5,
+                    "order": "seriesAsc"
+                },
+                "xAxis": [
+                    {
+                        "show": true,
+                        "scale": false,
+                        "nameLocation": "end",
+                        "nameGap": 15,
+                        "gridIndex": 0,
+                        "axisLabel": {
+                            "show": true,
+                            "rotate": 30,
+                            "margin": 8,
+                            "valueAnimation": false
+                        },
+                        "inverse": false,
+                        "offset": 0,
+                        "splitNumber": 5,
+                        "minInterval": 0,
+                        "splitLine": {
+                            "show": true,
+                            "lineStyle": {
+                                "show": true,
+                                "width": 1,
+                                "opacity": 1,
+                                "curveness": 0,
+                                "type": "solid"
+                            }
+                        },
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0,
+                        "data": [
+                            "2010",
+                            "2011",
+                            "2012",
+                            "2013",
+                            "2014",
+                            "2015",
+                            "2016",
+                            "2017",
+                            "2018",
+                            "2019",
+                            "2020",
+                            "2021",
+                            "2022",
+                            "2023",
+                            "2024"
+                        ]
+                    }
+                ],
+                "yAxis": [
+                    {
+                        "name": "\u7edd\u6536\u9762\u79ef\uff08\u5343\u516c\u9877\uff09",
+                        "show": true,
+                        "scale": false,
+                        "nameLocation": "end",
+                        "nameGap": 15,
+                        "gridIndex": 0,
+                        "inverse": false,
+                        "offset": 0,
+                        "splitNumber": 5,
+                        "minInterval": 0,
+                        "splitLine": {
+                            "show": true,
+                            "lineStyle": {
+                                "show": true,
+                                "width": 1,
+                                "opacity": 1,
+                                "curveness": 0,
+                                "type": "solid"
+                            }
+                        },
+                        "animation": true,
+                        "animationThreshold": 2000,
+                        "animationDuration": 1000,
+                        "animationEasing": "cubicOut",
+                        "animationDelay": 0,
+                        "animationDurationUpdate": 300,
+                        "animationEasingUpdate": "cubicOut",
+                        "animationDelayUpdate": 0
+                    }
+                ],
+                "title": [
+                    {
+                        "show": true,
+                        "text": "\u5404\u7c7b\u81ea\u7136\u707e\u5bb3\u7edd\u6536\u9762\u79ef\u7edf\u8ba1 (2010-2024)",
+                        "target": "blank",
+                        "subtext": "\u5355\u4f4d\uff1a\u5343\u516c\u9877",
+                        "subtarget": "blank",
+                        "left": "center",
+                        "padding": 5,
+                        "itemGap": 10,
+                        "textAlign": "auto",
+                        "textVerticalAlign": "auto",
+                        "triggerEvent": false
+                    }
+                ],
+                "dataZoom": [
+                    {
+                        "show": true,
+                        "type": "slider",
+                        "showDetail": true,
+                        "showDataShadow": true,
+                        "realtime": true,
+                        "start": 20,
+                        "end": 80,
+                        "orient": "horizontal",
+                        "zoomLock": false,
+                        "filterMode": "filter"
+                    }
+                ]
+            };
+            chart_498068209131424bb92bb9d4d8e4a1b3.setOption(option_498068209131424bb92bb9d4d8e4a1b3);
+        </script>
+        <br />
+        <style>
+            .fl-table {
+                margin: 20px;
+                border-radius: 5px;
+                font-size: 12px;
+                border: none;
+                border-collapse: collapse;
+                max-width: 100%;
+                white-space: nowrap;
+                word-break: keep-all;
+            }
+
+            .fl-table th {
+                text-align: left;
+                font-size: 20px;
+            }
+
+            .fl-table tr {
+                display: table-row;
+                vertical-align: inherit;
+                border-color: inherit;
+            }
+
+            .fl-table tr:hover td {
+                background: #00d1b2;
+                color: #F8F8F8;
+            }
+
+            .fl-table td,
+            .fl-table th {
+                border-style: none;
+                border-top: 1px solid #dbdbdb;
+                border-left: 1px solid #dbdbdb;
+                border-bottom: 3px solid #dbdbdb;
+                border-right: 1px solid #dbdbdb;
+                padding: .5em .55em;
+                font-size: 15px;
+            }
+
+            .fl-table td {
+                border-style: none;
+                font-size: 15px;
+                vertical-align: center;
+                border-bottom: 1px solid #dbdbdb;
+                border-left: 1px solid #dbdbdb;
+                border-right: 1px solid #dbdbdb;
+                height: 30px;
+            }
+
+            .fl-table tr:nth-child(even) {
+                background: #F8F8F8;
+            }
+        </style>
+        <div id="36fce01d3ce740c3b784527e15b389f3" class="chart-container">
+            <p class="title" style="font-size: 18px; font-weight:bold;"> 自然灾害绝收面积数据表 (2010-2024)</p>
+            <p class="subtitle" style="font-size: 12px;"> 单位：千公顷</p>
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>年份</th>
+                        <th>旱灾</th>
+                        <th>洪涝台风</th>
+                        <th>风雹</th>
+                        <th>低温雪灾</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2010</td>
+                        <td>2672.30</td>
+                        <td>1669.90</td>
+                        <td>280.30</td>
+                        <td>240.70</td>
+                    </tr>
+                    <tr>
+                        <td>2011</td>
+                        <td>1505.40</td>
+                        <td>872.80</td>
+                        <td>302.40</td>
+                        <td>211.10</td>
+                    </tr>
+                    <tr>
+                        <td>2012</td>
+                        <td>374.00</td>
+                        <td>1095.30</td>
+                        <td>213.40</td>
+                        <td>142.90</td>
+                    </tr>
+                    <tr>
+                        <td>2013</td>
+                        <td>1416.10</td>
+                        <td>1828.90</td>
+                        <td>412.40</td>
+                        <td>180.70</td>
+                    </tr>
+                    <tr>
+                        <td>2014</td>
+                        <td>1484.70</td>
+                        <td>976.90</td>
+                        <td>457.70</td>
+                        <td>168.20</td>
+                    </tr>
+                    <tr>
+                        <td>2015</td>
+                        <td>1046.10</td>
+                        <td>841.00</td>
+                        <td>309.10</td>
+                        <td>36.50</td>
+                    </tr>
+                    <tr>
+                        <td>2016</td>
+                        <td>1018.30</td>
+                        <td>1442.40</td>
+                        <td>268.80</td>
+                        <td>172.70</td>
+                    </tr>
+                    <tr>
+                        <td>2017</td>
+                        <td>752.40</td>
+                        <td>766.10</td>
+                        <td>225.20</td>
+                        <td>83.00</td>
+                    </tr>
+                    <tr>
+                        <td>2018</td>
+                        <td>922.40</td>
+                        <td>1009.90</td>
+                        <td>196.60</td>
+                        <td>456.10</td>
+                    </tr>
+                    <tr>
+                        <td>2019</td>
+                        <td>1113.60</td>
+                        <td>1480.80</td>
+                        <td>171.40</td>
+                        <td>36.20</td>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>704.50</td>
+                        <td>1498.00</td>
+                        <td>290.80</td>
+                        <td>212.70</td>
+                    </tr>
+                    <tr>
+                        <td>2021</td>
+                        <td>464.10</td>
+                        <td>918.40</td>
+                        <td>205.70</td>
+                        <td>44.40</td>
+                    </tr>
+                    <tr>
+                        <td>2022</td>
+                        <td>611.80</td>
+                        <td>505.20</td>
+                        <td>175.10</td>
+                        <td>59.30</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br />
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
