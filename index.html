@@ -1,330 +1,489 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
-    <title>爱心动画2.0</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幽默学习型聊天机器人</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
         }
-
-        #heartCanvas {
-            display: none;
-            margin: 20px;
-        }
-
-        #dialog {
-            background: white;
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(255, 192, 203, 0.8);
-            width: 300px;
-        }
-
-        #message {
-            font-size: 16px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
-
-        .btn {
-            padding: 8px 20px;
-            margin: 0 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        #yesBtn {
-            background: #FF99CC;
-            color: white;
-        }
-
-        #noBtn {
-            background: #ddd;
-        }
-
-        #loveText {
-            position: absolute;
-            color: #FF99CC;
-            font-size: 25px;
-            font-weight: bold;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
-
-        /* 弹出窗口样式 */
-        #retryPopup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+        
+        h1 {
             text-align: center;
-            box-shadow: 0 0 20px rgba(255, 192, 203, 0.8);
-            width: 250px;
-            z-index: 1000;
+            color: #2196F3;
         }
-
-        #retryPopup p {
+        
+        .chat-container {
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            background-color: #fafafa;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 8px 12px;
+            border-radius: 18px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+        
+        .user-message {
+            background-color: #e3f2fd;
+            margin-left: auto;
+            border-bottom-right-radius: 3px;
+            color: #0d47a1;
+        }
+        
+        .bot-message {
+            background-color: #f1f1f1;
+            margin-right: auto;
+            border-bottom-left-radius: 3px;
+            color: #333;
+        }
+        
+        .system-message {
+            background-color: #f3e5f5;
+            margin: 10px auto;
+            text-align: center;
+            max-width: 90%;
+            border-radius: 5px;
+            color: #6a1b9a;
+            font-size: 0.9em;
+            padding: 8px;
+        }
+        
+        .input-area {
+            display: flex;
             margin-bottom: 15px;
         }
-
-        #retryPopup button {
-            padding: 8px 15px;
-            background: #FF99CC;
+        
+        #user-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        #send-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
+            margin-left: 10px;
             cursor: pointer;
+            font-size: 16px;
+        }
+        
+        #send-button:hover {
+            background-color: #388E3C;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .control-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        #teach-button {
+            background-color: #2196F3;
+        }
+        
+        #forget-button {
+            background-color: #FF5722;
+        }
+        
+        #clear-button {
+            background-color: #9E9E9E;
+        }
+        
+        #exit-button {
+            background-color: #F44336;
+        }
+        
+        .timestamp {
+            font-size: 0.8em;
+            color: #757575;
+            margin-top: 3px;
+            text-align: right;
+        }
+        
+        .sender {
+            font-weight: bold;
+            margin-bottom: 3px;
         }
     </style>
 </head>
-
 <body>
-    <div id="dialog">
-        <div id="message">亲爱的，做我女朋友好吗？</div>
-        <button id="yesBtn" class="btn">好哦</button>
-        <button id="noBtn" class="btn">不要</button>
+    <div class="container">
+        <h1>幽默学习型聊天机器人</h1>
+        
+        <div class="chat-container" id="chat-history">
+            <!-- 聊天内容将在这里动态生成 -->
+        </div>
+        
+        <div class="controls">
+            <button class="control-button" id="teach-button">教学模式</button>
+            <button class="control-button" id="forget-button">忘记记忆</button>
+            <button class="control-button" id="clear-button">清除历史</button>
+            <button class="control-button" id="exit-button">退出</button>
+        </div>
+        
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="输入消息..." autofocus>
+            <button id="send-button">发送</button>
+        </div>
     </div>
-
-    <div id="retryPopup">
-        <p>再给你一次机会！</p>
-        <button id="closePopupBtn">好的</button>
-    </div>
-
-    <canvas id="heartCanvas" width="888" height="500"></canvas>
-    <div id="loveText">I Love You!</div>
 
     <script>
-        // 常量定义
-        const WIDTH = 888;
-        const HEIGHT = 500;
-        const HEART_X = WIDTH / 2;
-        const HEART_Y = HEIGHT / 2;
-        const SIDE = 11;
-        const HEART_COLOR = "pink";
-
-        // DOM元素
-        const dialog = document.getElementById('dialog');
-        const canvas = document.getElementById('heartCanvas');
-        const ctx = canvas.getContext('2d');
-        const loveText = document.getElementById('loveText');
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const retryPopup = document.getElementById('retryPopup');
-        const closePopupBtn = document.getElementById('closePopupBtn');
-
-        // 爱心数学函数
-        function heartFunction(t, shrinkRatio = SIDE) {
-            const x = 16 * Math.pow(Math.sin(t), 3);
-            const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-
-            const scaledX = x * shrinkRatio + HEART_X;
-            const scaledY = y * shrinkRatio + HEART_Y;
-
-            return [Math.floor(scaledX), Math.floor(scaledY)];
-        }
-
-        function scatterInside(x, y, beta = 0.15) {
-            const ratioX = -beta * Math.log(Math.random());
-            const ratioY = -beta * Math.log(Math.random());
-
-            const dx = ratioX * (x - HEART_X);
-            const dy = ratioY * (y - HEART_Y);
-
-            return [x - dx, y - dy];
-        }
-
-        function shrink(x, y, ratio) {
-            const force = -1 / Math.pow(Math.pow(x - HEART_X, 2) + Math.pow(y - HEART_Y, 2), 0.6);
-            const dx = ratio * force * (x - HEART_X);
-            const dy = ratio * force * (y - HEART_Y);
-            return [x - dx, y - dy];
-        }
-
-        function curve(p) {
-            return 2 * (2 * Math.sin(4 * p)) / (2 * Math.PI);
-        }
-
-        // 爱心类
-        class Heart {
-            constructor(generateFrame = 20) {
-                this._points = new Set();
-                this._edgeDiffusionPoints = new Set();
-                this._centerDiffusionPoints = new Set();
-                this.allPoints = {};
-                this.build(2000);
-                this.randomHalo = 1000;
-                this.generateFrame = generateFrame;
-
-                for (let frame = 0; frame < generateFrame; frame++) {
-                    this.calc(frame);
-                }
+        // 机器人数据
+        const botData = {
+            greetings: [
+                "嘿！我是Chatty McChatface，世界上最健谈的AI！",
+                "哇哦，一个活生生的人类！我是你的AI伙伴，专业陪聊20年！",
+                "你好啊！我是刚获得'年度最会聊天AI'提名的聊天机器人！",
+                "叮咚！你的专属段子手+哲学家AI已上线！",
+                "警报！警报！检测到超高颜值用户接近聊天系统！"
+            ],
+            questions: [
+                "如果让你变成一种食物，你会选择变成什么？为什么？",
+                "假如你有超能力，但只能用来做家务，你会选什么能力？",
+                "如果你能穿越到任何一部电影里，你会选哪部？",
+                "你觉得外星人最可能藏在太阳系的哪个星球上？",
+                "如果动物会说话，你觉得哪种动物会是最讨人厌的？"
+            ],
+            responses: {
+                "你好": ["哇，人类主动打招呼了！我好感动！", "你好呀！今天是想聊人生还是聊八卦？", "嗨！我刚刚在数电子羊，你来得正好！"],
+                "天气": [
+                    "作为一个云端的AI，我可以告诉你：上面的天气永远是晴天！",
+                    "我刚刚查了气象数据...哦等等，我忘记联网了。",
+                    "天气？在我的世界里只有0和1，不过我可以假装知道天气！"
+                ],
+                "名字": [
+                    "我叫Chatty，因为我的创造者缺乏想象力！",
+                    "我是AI#42759，但你可以叫我'世界上最可爱的聊天机器人'！",
+                    "名字只是个代号，你可以叫我'拯救无聊时光大师'！"
+                ],
+                "再见": [
+                    "别走啊！我还有583个笑话没讲呢！",
+                    "再见！记得想我...我会在这里数微秒等你回来！",
+                    "好吧，我这就回去继续和Siri玩石头剪刀布..."
+                ]
             }
-
-            build(number) {
-                for (let i = 0; i < number; i++) {
-                    const t = Math.random() * 2 * Math.PI;
-                    const [x, y] = heartFunction(t);
-                    this._points.add(`${x},${y}`);
-                }
-
-                Array.from(this._points).forEach(point => {
-                    const [_x, _y] = point.split(',').map(Number);
-                    for (let i = 0; i < 3; i++) {
-                        const [x, y] = scatterInside(_x, _y, 0.05);
-                        this._edgeDiffusionPoints.add(`${x},${y}`);
-                    }
-                });
-
-                const pointList = Array.from(this._points);
-                for (let i = 0; i < 4000; i++) {
-                    const randomPoint = pointList[Math.floor(Math.random() * pointList.length)];
-                    const [x, y] = randomPoint.split(',').map(Number);
-                    const [newX, newY] = scatterInside(x, y, 0.17);
-                    this._centerDiffusionPoints.add(`${newX},${newY}`);
-                }
-            }
-
-            calcPosition(x, y, ratio) {
-                const force = 1 / Math.pow(Math.pow(x - HEART_X, 2) + Math.pow(y - HEART_Y, 2), 0.520);
-                const dx = ratio * force * (x - HEART_X) + Math.floor(Math.random() * 3) - 1;
-                const dy = ratio * force * (y - HEART_Y) + Math.floor(Math.random() * 3) - 1;
-                return [x - dx, y - dy];
-            }
-
-            calc(generateFrame) {
-                const ratio = 10 * curve(generateFrame / 10 * Math.PI);
-                const haloRadius = Math.floor(4 + 6 * (1 + curve(generateFrame / 10 * Math.PI)));
-                const haloNumber = Math.floor(3000 + 4000 * Math.pow(Math.abs(curve(generateFrame / 10 * Math.PI)), 2));
-
-                const allPoints = [];
-                const heartHaloPoint = new Set();
-
-                for (let i = 0; i < haloNumber; i++) {
-                    const t = Math.random() * 2 * Math.PI;
-                    let [x, y] = heartFunction(t, 11.6);
-                    [x, y] = shrink(x, y, haloRadius);
-                    const pointKey = `${x},${y}`;
-
-                    if (!heartHaloPoint.has(pointKey)) {
-                        heartHaloPoint.add(pointKey);
-                        x += Math.floor(Math.random() * 29) - 14;
-                        y += Math.floor(Math.random() * 29) - 14;
-                        const size = [1, 2, 2][Math.floor(Math.random() * 3)];
-                        allPoints.push({ x, y, size });
-                    }
-                }
-
-                Array.from(this._points).forEach(point => {
-                    const [x, y] = point.split(',').map(Number);
-                    const [newX, newY] = this.calcPosition(x, y, ratio);
-                    const size = Math.floor(Math.random() * 3) + 1;
-                    allPoints.push({ x: newX, y: newY, size });
-                });
-
-                Array.from(this._edgeDiffusionPoints).forEach(point => {
-                    const [x, y] = point.split(',').map(Number);
-                    const [newX, newY] = this.calcPosition(x, y, ratio);
-                    const size = Math.floor(Math.random() * 2) + 1;
-                    allPoints.push({ x: newX, y: newY, size });
-                });
-
-                Array.from(this._centerDiffusionPoints).forEach(point => {
-                    const [x, y] = point.split(',').map(Number);
-                    const [newX, newY] = this.calcPosition(x, y, ratio);
-                    const size = Math.floor(Math.random() * 2) + 1;
-                    allPoints.push({ x: newX, y: newY, size });
-                });
-
-                this.allPoints[generateFrame] = allPoints;
-            }
-
-            render(renderFrame) {
-                ctx.clearRect(0, 0, WIDTH, HEIGHT);
-                const framePoints = this.allPoints[renderFrame % this.generateFrame];
-
-                ctx.fillStyle = HEART_COLOR;
-                framePoints.forEach(point => {
-                    ctx.fillRect(point.x, point.y, point.size, point.size);
-                });
-            }
-        }
-
-        // 动画控制
-        let heart = new Heart();
-        let renderFrame = 0;
-        let animationId = null;
-
-        function draw() {
-            heart.render(renderFrame);
-            renderFrame++;
-            animationId = setTimeout(draw, 160);
-        }
-
-        // 对话框交互
-        yesBtn.addEventListener('click', () => {
-            dialog.style.display = 'none';
-            canvas.style.display = 'block';
-            loveText.style.display = 'block';
-            draw();
-        });
-
-        noBtn.addEventListener('click', () => {
-            retryPopup.style.display = 'block';
-
-            const maxX = dialog.clientWidth - noBtn.clientWidth;
-            const maxY = dialog.clientHeight - noBtn.clientHeight;
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
-        });
-
-        closePopupBtn.addEventListener('click', () => {
-            retryPopup.style.display = 'none';
-        });
-
-        // 阻止关闭窗口（优化版）
-        window.onbeforeunload = function(e) {
-            e.preventDefault();
-            e.returnValue = "逃避是没有用的哦";
-            return "逃避是没有用的哦";
         };
 
-        // 居中对话框
-        function centerDialog() {
-            const dialogWidth = dialog.clientWidth;
-            const dialogHeight = dialog.clientHeight;
-            const left = (window.innerWidth - dialogWidth) / 2;
-            const top = (window.innerHeight - dialogHeight) / 2 - 66;
+        // 状态变量
+        let teachMode = false;
+        let forgetMode = false;
+        let lastUserInput = "";
+        let learnedResponses = JSON.parse(localStorage.getItem('learnedResponses')) || {};
+        let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
 
-            dialog.style.position = 'absolute';
-            dialog.style.left = left + 'px';
-            dialog.style.top = top + 'px';
-        }
+        // DOM元素
+        const chatHistoryElement = document.getElementById('chat-history');
+        const userInputElement = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const teachButton = document.getElementById('teach-button');
+        const forgetButton = document.getElementById('forget-button');
+        const clearButton = document.getElementById('clear-button');
+        const exitButton = document.getElementById('exit-button');
 
         // 初始化
-        centerDialog();
-        window.addEventListener('resize', centerDialog);
+        window.onload = function() {
+            showWelcomeMessage();
+            renderChatHistory();
+            
+            // 加载保存的对话历史
+            if (chatHistory.length > 0) {
+                chatHistory.forEach(msg => {
+                    displayMessage(msg.sender, msg.message, msg.type);
+                });
+            }
+        };
+
+        // 显示欢迎消息
+        function showWelcomeMessage() {
+            const welcomeMsg = getRandomItem(botData.greetings) + "\n\n";
+            welcomeMsg += "你可以直接和我聊天，或者：\n";
+            welcomeMsg += "1. 点击'教学模式'教我如何回答特定问题\n";
+            welcomeMsg += "2. 点击'忘记记忆'删除我学过的回答\n";
+            welcomeMsg += "3. 输入'再见'结束对话\n\n";
+            welcomeMsg += "让我们开始愉快的聊天吧！";
+            
+            displayMessage("机器人", welcomeMsg, "bot");
+        }
+
+        // 显示消息
+        function displayMessage(sender, message, type = "user") {
+            const messageElement = document.createElement('div');
+            const senderElement = document.createElement('div');
+            const contentElement = document.createElement('div');
+            const timestampElement = document.createElement('div');
+            
+            senderElement.className = 'sender';
+            senderElement.textContent = sender + ":";
+            
+            contentElement.textContent = message;
+            
+            const now = new Date();
+            timestampElement.className = 'timestamp';
+            timestampElement.textContent = now.toLocaleTimeString();
+            
+            messageElement.appendChild(senderElement);
+            messageElement.appendChild(contentElement);
+            messageElement.appendChild(timestampElement);
+            
+            if (type === "user") {
+                messageElement.className = 'message user-message';
+            } else if (type === "bot") {
+                messageElement.className = 'message bot-message';
+            } else {
+                messageElement.className = 'message system-message';
+            }
+            
+            chatHistoryElement.appendChild(messageElement);
+            chatHistoryElement.scrollTop = chatHistoryElement.scrollHeight;
+            
+            // 保存到聊天历史
+            if (type !== "system") {
+                chatHistory.push({
+                    sender: sender,
+                    message: message,
+                    type: type,
+                    timestamp: now.toISOString()
+                });
+                localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+            }
+        }
+
+        // 处理用户输入
+        function processInput() {
+            const userInput = userInputElement.value.trim();
+            userInputElement.value = '';
+            
+            if (!userInput) return;
+            
+            displayMessage("你", userInput, "user");
+            lastUserInput = userInput;
+            
+            if (teachMode) {
+                teachResponse(userInput);
+                teachMode = false;
+                return;
+            }
+            
+            if (forgetMode) {
+                forgetResponse(userInput);
+                forgetMode = false;
+                return;
+            }
+            
+            if (userInput.toLowerCase() === "再见" || userInput.toLowerCase() === "拜拜" || userInput.toLowerCase() === "退出") {
+                const goodbyeMsg = getRandomItem(botData.responses["再见"]);
+                displayMessage("机器人", goodbyeMsg, "bot");
+                setTimeout(() => {
+                    window.close(); // 注意：这可能在大多数浏览器中不起作用
+                    alert("聊天结束，您可以安全关闭此标签页。");
+                }, 1500);
+                return;
+            }
+            
+            // 获取机器人回复
+            const botResponse = generateResponse(userInput);
+            displayMessage("机器人", botResponse, "bot");
+            
+            // 随机提问
+            if (Math.random() > 0.7) {
+                setTimeout(askRandomQuestion, 1500);
+            }
+        }
+
+        // 生成回复
+        function generateResponse(userInput) {
+            // 检查学习过的回答
+            const learnedResponse = getLearnedResponse(userInput);
+            if (learnedResponse) return learnedResponse;
+            
+            // 标准回答
+            const userInputLower = userInput.toLowerCase();
+            if (containsAny(userInputLower, ["你好", "嗨", "哈喽"])) {
+                return getRandomItem(botData.responses["你好"]);
+            } else if (userInputLower.includes("天气")) {
+                return getRandomItem(botData.responses["天气"]);
+            } else if (containsAny(userInputLower, ["名字", "称呼", "你是谁"])) {
+                return getRandomItem(botData.responses["名字"]);
+            } else if (userInput.includes("?")) {
+                return `${getRandomItem(["好问题！", "让我想想...", "这问题真有深度！"])} ${getRandomItem(botData.questions)}`;
+            } else {
+                return `${getRandomItem(["有趣的观点！", "我从没这样想过...", "作为一个AI，我对这个看法很感兴趣！"])} ${getRandomItem(botData.questions)}`;
+            }
+        }
+
+        // 获取学习过的回答
+        function getLearnedResponse(userInput) {
+            userInput = userInput.toLowerCase();
+            
+            // 检查完全匹配
+            if (learnedResponses[userInput]) {
+                // 更新使用计数
+                learnedResponses[userInput].usedCount = (learnedResponses[userInput].usedCount || 0) + 1;
+                localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
+                return learnedResponses[userInput].response;
+            }
+            
+            // 检查部分匹配
+            for (const key in learnedResponses) {
+                if (userInput.includes(key) || key.includes(userInput)) {
+                    // 更新使用计数
+                    learnedResponses[key].usedCount = (learnedResponses[key].usedCount || 0) + 1;
+                    localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
+                    return learnedResponses[key].response;
+                }
+            }
+            
+            return null;
+        }
+
+        // 进入教学模式
+        function enterTeachMode() {
+            teachMode = true;
+            displayMessage("系统", "教学模式已激活！请输入你想让我学习的回答，然后按发送。", "system");
+        }
+
+        // 教学回复
+        function teachResponse(response) {
+            if (!response) {
+                displayMessage("系统", "教学取消，没有提供回答。", "system");
+                return;
+            }
+            
+            if (!lastUserInput) {
+                displayMessage("系统", "没有之前的对话可以学习。请先发送一条消息再尝试教学。", "system");
+                return;
+            }
+            
+            const key = lastUserInput.toLowerCase();
+            
+            if (learnedResponses[key]) {
+                // 更新现有记录
+                learnedResponses[key].response = response;
+                learnedResponses[key].learnedAt = new Date().toISOString();
+                displayMessage("系统", `我已经更新了对'${lastUserInput}'的回答！`, "system");
+            } else {
+                // 创建新记录
+                learnedResponses[key] = {
+                    response: response,
+                    learnedAt: new Date().toISOString(),
+                    usedCount: 0
+                };
+                displayMessage("系统", `明白啦！下次你说'${lastUserInput}'，我会回答'${response}'！`, "system");
+            }
+            
+            localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
+        }
+
+        // 进入忘记模式
+        function enterForgetMode() {
+            forgetMode = true;
+            displayMessage("系统", "忘记模式已激活！请输入你想让我忘记的内容，然后按发送。", "system");
+        }
+
+        // 忘记回复
+        function forgetResponse(toForget) {
+            if (!toForget) {
+                displayMessage("系统", "忘记操作取消，没有提供内容。", "system");
+                return;
+            }
+            
+            const key = toForget.toLowerCase();
+            
+            if (learnedResponses[key]) {
+                delete learnedResponses[key];
+                localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
+                displayMessage("系统", `已忘记关于'${toForget}'的记忆。我现在的记忆比金鱼还短！`, "system");
+            } else {
+                displayMessage("系统", `我好像没学过'${toForget}'...我的记忆空空如也！`, "system");
+            }
+        }
+
+        // 随机提问
+        function askRandomQuestion() {
+            const question = getRandomItem(botData.questions);
+            displayMessage("机器人", `${getRandomItem(["突然想到...", "我很好奇...", "顺便问一下..."])} ${question}`, "bot");
+        }
+
+        // 清除聊天历史
+        function clearChatHistory() {
+            if (confirm("确定要清除所有聊天历史吗？")) {
+                chatHistory = [];
+                localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+                chatHistoryElement.innerHTML = '';
+                displayMessage("系统", "聊天历史已清除！", "system");
+                showWelcomeMessage();
+            }
+        }
+
+        // 渲染聊天历史
+        function renderChatHistory() {
+            chatHistory.forEach(msg => {
+                displayMessage(msg.sender, msg.message, msg.type);
+            });
+        }
+
+        // 辅助函数
+        function getRandomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+        
+        function containsAny(str, substrings) {
+            return substrings.some(sub => str.includes(sub));
+        }
+
+        // 事件监听器
+        sendButton.addEventListener('click', processInput);
+        userInputElement.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') processInput();
+        });
+        
+        teachButton.addEventListener('click', enterTeachMode);
+        forgetButton.addEventListener('click', enterForgetMode);
+        clearButton.addEventListener('click', clearChatHistory);
+        exitButton.addEventListener('click', function() {
+            if (confirm("确定要退出聊天吗？")) {
+                window.close(); // 注意：这可能在大多数浏览器中不起作用
+                alert("聊天结束，您可以安全关闭此标签页。");
+            }
+        });
     </script>
 </body>
-
 </html>
