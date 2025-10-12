@@ -3,486 +3,543 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>幽默学习型聊天机器人</title>
+    <title>时间计算器</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f5f5f5;
-            color: #333;
+            font-family: "Microsoft YaHei", sans-serif;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        .card {
             border-radius: 8px;
-            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            border: 2px solid #cccccc;
         }
-        
-        h1 {
-            text-align: center;
-            color: #2196F3;
-        }
-        
-        .chat-container {
-            height: 500px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 20px;
-            overflow-y: auto;
-            background-color: #fafafa;
-        }
-        
-        .message {
-            margin-bottom: 15px;
-            padding: 8px 12px;
-            border-radius: 18px;
-            max-width: 70%;
-            word-wrap: break-word;
-        }
-        
-        .user-message {
-            background-color: #e3f2fd;
-            margin-left: auto;
-            border-bottom-right-radius: 3px;
-            color: #0d47a1;
-        }
-        
-        .bot-message {
-            background-color: #f1f1f1;
-            margin-right: auto;
-            border-bottom-left-radius: 3px;
-            color: #333;
-        }
-        
-        .system-message {
-            background-color: #f3e5f5;
-            margin: 10px auto;
-            text-align: center;
-            max-width: 90%;
-            border-radius: 5px;
-            color: #6a1b9a;
-            font-size: 0.9em;
-            padding: 8px;
-        }
-        
-        .input-area {
-            display: flex;
-            margin-bottom: 15px;
-        }
-        
-        #user-input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        
-        #send-button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            margin-left: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        #send-button:hover {
-            background-color: #388E3C;
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        
-        .control-button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        #teach-button {
-            background-color: #2196F3;
-        }
-        
-        #forget-button {
-            background-color: #FF5722;
-        }
-        
-        #clear-button {
-            background-color: #9E9E9E;
-        }
-        
-        #exit-button {
-            background-color: #F44336;
-        }
-        
-        .timestamp {
-            font-size: 0.8em;
-            color: #757575;
-            margin-top: 3px;
-            text-align: right;
-        }
-        
-        .sender {
+        .card-header {
+            background-color: #fff;
+            border-bottom: 2px solid #cccccc;
             font-weight: bold;
-            margin-bottom: 3px;
+            color: #333;
+            border-radius: 8px 8px 0 0 !important;
+        }
+        .current-time {
+            background-color: #e8f5e8;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2e7d32;
+            text-align: center;
+        }
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+        }
+        .btn-outline-primary {
+            color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .btn-outline-primary:hover {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .result-box {
+            background-color: #fafafa;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: Consolas, Monaco, monospace;
+            min-height: 200px;
+            white-space: pre-wrap;
+        }
+        .example-text {
+            color: #666;
+            font-size: 12px;
+        }
+        .nav-tabs .nav-link.active {
+            color: #4CAF50;
+            font-weight: bold;
+            border-bottom: 2px solid #4CAF50;
+        }
+        .nav-tabs .nav-link {
+            color: #666;
+        }
+        .enter-hint {
+            color: #888;
+            font-size: 11px;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>幽默学习型聊天机器人</h1>
+    <div class="container py-4">
+        <h1 class="text-center mb-4">时间计算器</h1>
         
-        <div class="chat-container" id="chat-history">
-            <!-- 聊天内容将在这里动态生成 -->
+        <!-- 当前时间显示 -->
+        <div class="current-time mb-4">
+            <i class="bi bi-clock"></i> 当前时间: <span id="current-time">加载中...</span>
         </div>
         
-        <div class="controls">
-            <button class="control-button" id="teach-button">教学模式</button>
-            <button class="control-button" id="forget-button">忘记记忆</button>
-            <button class="control-button" id="clear-button">清除历史</button>
-            <button class="control-button" id="exit-button">退出</button>
+        <!-- 选项卡 -->
+        <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab">基础计算</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="quick-tab" data-bs-toggle="tab" data-bs-target="#quick" type="button" role="tab">快速计算</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+            <!-- 基础计算选项卡 -->
+            <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">基础时间设置</div>
+                    <div class="card-body">
+                        <p class="example-text">留空或输入 'now' 使用当前时间</p>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="base-time" placeholder="例如: 2024-01-01 10:00:00, 2024/01/01 10:00, now, 或留空">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">增加时间设置</div>
+                    <div class="card-body">
+                        <p class="example-text">支持格式: 2h30m, 1天2小时, 90(分钟), 1d3h15m等</p>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="duration" placeholder="例如: 2h30m, 1天2小时, 90, 1d3h15m">
+                            <div class="enter-hint">按 Enter 键快速计算</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary w-100 mb-4" id="calculate-btn">计算</button>
+            </div>
+            
+            <!-- 快速计算选项卡 -->
+            <div class="tab-pane fade" id="quick" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">快速增加时间</div>
+                    <div class="card-body">
+                        <p class="example-text">从当前时间快速增加指定时长</p>
+                        
+                        <div class="mb-3">
+                            <div class="row g-2">
+                                <div class="col-6 col-md-4">
+                                    <button class="btn btn-outline-primary w-100 quick-btn" data-duration="30m">30分钟</button>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <button class="btn btn-outline-primary w-100 quick-btn" data-duration="1h">1小时</button>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <button class="btn btn-outline-primary w-100 quick-btn" data-duration="2h">2小时</button>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <button class="btn btn-outline-primary w-100 quick-btn" data-duration="1d">1天</button>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <button class="btn btn-outline-primary w-100 quick-btn" data-duration="7d">1周</button>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <button class="btn btn-outline-primary w-100 quick-btn" data-duration="30d">1个月</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="quick-duration" placeholder="输入自定义时长，如: 2h30m">
+                            <button class="btn btn-primary" id="quick-calculate-btn">快速计算</button>
+                        </div>
+                        <div class="enter-hint">在输入框中按 Enter 键快速计算</div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="input-area">
-            <input type="text" id="user-input" placeholder="输入消息..." autofocus>
-            <button id="send-button">发送</button>
+        <!-- 计算结果 -->
+        <div class="card">
+            <div class="card-header">计算结果</div>
+            <div class="card-body">
+                <div class="result-box" id="results-display">请进行计算以显示结果</div>
+            </div>
+        </div>
+        
+        <!-- 使用示例 -->
+        <div class="card">
+            <div class="card-header">使用示例</div>
+            <div class="card-body">
+                <div class="example-text">
+                    <p><strong>基础时间示例:</strong></p>
+                    <ul>
+                        <li>2024-01-01 10:00:00</li>
+                        <li>2024/01/01 10:00</li>
+                        <li>2024年1月1日 10时30分</li>
+                        <li>10:30:00</li>
+                        <li>now (或留空使用当前时间)</li>
+                    </ul>
+                    
+                    <p><strong>增加时间示例:</strong></p>
+                    <ul>
+                        <li>2h30m (2小时30分钟)</li>
+                        <li>1d3h15m (1天3小时15分钟)</li>
+                        <li>1天2小时30分钟 (中文)</li>
+                        <li>90 (纯数字，默认为分钟)</li>
+                        <li>1.5h (1.5小时)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // 机器人数据
-        const botData = {
-            greetings: [
-                "嘿！我是Chatty McChatface，世界上最健谈的AI！",
-                "哇哦，一个活生生的人类！我是你的AI伙伴，专业陪聊20年！",
-                "你好啊！我是刚获得'年度最会聊天AI'提名的聊天机器人！",
-                "叮咚！你的专属段子手+哲学家AI已上线！",
-                "警报！警报！检测到超高颜值用户接近聊天系统！"
-            ],
-            questions: [
-                "如果让你变成一种食物，你会选择变成什么？为什么？",
-                "假如你有超能力，但只能用来做家务，你会选什么能力？",
-                "如果你能穿越到任何一部电影里，你会选哪部？",
-                "你觉得外星人最可能藏在太阳系的哪个星球上？",
-                "如果动物会说话，你觉得哪种动物会是最讨人厌的？"
-            ],
-            responses: {
-                "你好": ["哇，人类主动打招呼了！我好感动！", "你好呀！今天是想聊人生还是聊八卦？", "嗨！我刚刚在数电子羊，你来得正好！"],
-                "天气": [
-                    "作为一个云端的AI，我可以告诉你：上面的天气永远是晴天！",
-                    "我刚刚查了气象数据...哦等等，我忘记联网了。",
-                    "天气？在我的世界里只有0和1，不过我可以假装知道天气！"
-                ],
-                "名字": [
-                    "我叫Chatty，因为我的创造者缺乏想象力！",
-                    "我是AI#42759，但你可以叫我'世界上最可爱的聊天机器人'！",
-                    "名字只是个代号，你可以叫我'拯救无聊时光大师'！"
-                ],
-                "再见": [
-                    "别走啊！我还有583个笑话没讲呢！",
-                    "再见！记得想我...我会在这里数微秒等你回来！",
-                    "好吧，我这就回去继续和Siri玩石头剪刀布..."
-                ]
+        // 时间计算器类
+        class TimeIncreaseCalculator {
+            // 支持的时间格式
+            static TIME_FORMATS = [
+                "%Y-%m-%d %H:%M:%S",
+                "%Y/%m/%d %H:%M:%S",
+                "%Y%m%d %H:%M:%S",
+                "%Y-%m-%d %H:%M",
+                "%Y/%m/%d %H:%M",
+                "%Y%m%d %H:%M",
+                "%Y-%m-%d",
+                "%Y/%m/%d",
+                "%Y%m%d",
+                "%H:%M:%S",
+                "%H:%M",
+                "%Y年%m月%d日 %H时%M分%S秒",
+                "%Y年%m月%d日 %H时%M分",
+                "%Y年%m月%d日",
+                "%H时%M分%S秒",
+                "%H时%M分"
+            ];
+
+            static parseTime(timeStr) {
+                if (!timeStr || timeStr.toLowerCase() === 'now') {
+                    return new Date();
+                }
+
+                timeStr = timeStr.trim();
+
+                // 尝试智能解析
+                return this._smartParse(timeStr);
             }
-        };
 
-        // 状态变量
-        let teachMode = false;
-        let forgetMode = false;
-        let lastUserInput = "";
-        let learnedResponses = JSON.parse(localStorage.getItem('learnedResponses')) || {};
-        let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+            static _smartParse(timeStr) {
+                // 简化实现，实际应用中需要更复杂的解析逻辑
+                // 这里使用JavaScript内置的Date解析
+                const parsedDate = new Date(timeStr);
+                
+                if (isNaN(parsedDate.getTime())) {
+                    throw new Error(`无法解析时间字符串: ${timeStr}`);
+                }
+                
+                return parsedDate;
+            }
 
-        // DOM元素
-        const chatHistoryElement = document.getElementById('chat-history');
-        const userInputElement = document.getElementById('user-input');
-        const sendButton = document.getElementById('send-button');
-        const teachButton = document.getElementById('teach-button');
-        const forgetButton = document.getElementById('forget-button');
-        const clearButton = document.getElementById('clear-button');
-        const exitButton = document.getElementById('exit-button');
+            static parseDuration(durationStr) {
+                if (!durationStr.trim()) {
+                    throw new Error("持续时间不能为空");
+                }
 
-        // 初始化
-        window.onload = function() {
-            showWelcomeMessage();
-            renderChatHistory();
-            
-            // 加载保存的对话历史
-            if (chatHistory.length > 0) {
-                chatHistory.forEach(msg => {
-                    displayMessage(msg.sender, msg.message, msg.type);
+                durationStr = durationStr.toLowerCase().trim();
+
+                // 单位映射
+                const unitMap = {
+                    'd': 'days',
+                    'day': 'days',
+                    'days': 'days',
+                    'h': 'hours',
+                    'hour': 'hours',
+                    'hours': 'hours',
+                    'm': 'minutes',
+                    'min': 'minutes',
+                    'minute': 'minutes',
+                    'minutes': 'minutes',
+                    's': 'seconds',
+                    'sec': 'seconds',
+                    'second': 'seconds',
+                    'seconds': 'seconds',
+                    '天': 'days',
+                    '小时': 'hours',
+                    '时': 'hours',
+                    '分钟': 'minutes',
+                    '分': 'minutes',
+                    '秒': 'seconds'
+                };
+
+                // 匹配数字和单位
+                const pattern = /(\d+\.?\d*)\s*([a-z\u4e00-\u9fff]+)/g;
+                let matches;
+                let totalMs = 0;
+
+                while ((matches = pattern.exec(durationStr)) !== null) {
+                    const value = parseFloat(matches[1]);
+                    const unit = matches[2];
+                    
+                    if (unitMap[unit]) {
+                        switch (unitMap[unit]) {
+                            case 'days':
+                                totalMs += value * 24 * 60 * 60 * 1000;
+                                break;
+                            case 'hours':
+                                totalMs += value * 60 * 60 * 1000;
+                                break;
+                            case 'minutes':
+                                totalMs += value * 60 * 1000;
+                                break;
+                            case 'seconds':
+                                totalMs += value * 1000;
+                                break;
+                        }
+                    }
+                }
+
+                // 如果没有匹配到单位，尝试解析为纯数字（默认为分钟）
+                if (totalMs === 0) {
+                    try {
+                        const minutes = parseFloat(durationStr);
+                        if (!isNaN(minutes)) {
+                            totalMs = minutes * 60 * 1000;
+                        } else {
+                            throw new Error(`无法解析持续时间: ${durationStr}`);
+                        }
+                    } catch (e) {
+                        throw new Error(`无法解析持续时间: ${durationStr}`);
+                    }
+                }
+
+                return totalMs;
+            }
+
+            static increaseTime(baseTime = "", duration = "") {
+                let baseDate;
+                
+                if (!baseTime) {
+                    baseDate = new Date();
+                } else if (typeof baseTime === 'string') {
+                    baseDate = this.parseTime(baseTime);
+                } else {
+                    baseDate = baseTime;
+                }
+
+                let durationMs;
+                if (typeof duration === 'string') {
+                    durationMs = this.parseDuration(duration);
+                } else {
+                    durationMs = duration;
+                }
+
+                return new Date(baseDate.getTime() + durationMs);
+            }
+
+            static formatResult(timeObj, formatStr = "%Y-%m-%d %H:%M:%S") {
+                // 简化实现，实际应用中需要更完整的格式化功能
+                const year = timeObj.getFullYear();
+                const month = String(timeObj.getMonth() + 1).padStart(2, '0');
+                const day = String(timeObj.getDate()).padStart(2, '0');
+                const hours = String(timeObj.getHours()).padStart(2, '0');
+                const minutes = String(timeObj.getMinutes()).padStart(2, '0');
+                const seconds = String(timeObj.getSeconds()).padStart(2, '0');
+
+                return formatStr
+                    .replace('%Y', year)
+                    .replace('%m', month)
+                    .replace('%d', day)
+                    .replace('%H', hours)
+                    .replace('%M', minutes)
+                    .replace('%S', seconds);
+            }
+
+            static getCurrentTime(formatStr = "%Y-%m-%d %H:%M:%S") {
+                return this.formatResult(new Date(), formatStr);
+            }
+        }
+
+        // UI控制器
+        class TimeCalculatorUI {
+            constructor() {
+                this.calculator = TimeIncreaseCalculator;
+                this.initUI();
+            }
+
+            initUI() {
+                this.updateCurrentTime();
+                setInterval(() => this.updateCurrentTime(), 1000);
+                
+                // 绑定事件
+                document.getElementById('calculate-btn').addEventListener('click', () => this.calculateTime());
+                document.getElementById('quick-calculate-btn').addEventListener('click', () => this.quickCalculateCustom());
+                
+                // 绑定快速计算按钮
+                document.querySelectorAll('.quick-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const duration = e.target.getAttribute('data-duration');
+                        this.performQuickCalculation(duration);
+                    });
+                });
+
+                // 绑定回车键事件
+                this.bindEnterKeyEvents();
+            }
+
+            bindEnterKeyEvents() {
+                // 基础计算选项卡的持续时间输入框
+                document.getElementById('duration').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.calculateTime();
+                    }
+                });
+
+                // 快速计算选项卡的自定义输入框
+                document.getElementById('quick-duration').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.quickCalculateCustom();
+                    }
+                });
+
+                // 基础时间输入框也可以绑定回车键，直接跳到持续时间输入框
+                document.getElementById('base-time').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        document.getElementById('duration').focus();
+                    }
                 });
             }
-        };
 
-        // 显示欢迎消息
-        function showWelcomeMessage() {
-            const welcomeMsg = getRandomItem(botData.greetings) + "\n\n";
-            welcomeMsg += "你可以直接和我聊天，或者：\n";
-            welcomeMsg += "1. 点击'教学模式'教我如何回答特定问题\n";
-            welcomeMsg += "2. 点击'忘记记忆'删除我学过的回答\n";
-            welcomeMsg += "3. 输入'再见'结束对话\n\n";
-            welcomeMsg += "让我们开始愉快的聊天吧！";
-            
-            displayMessage("机器人", welcomeMsg, "bot");
-        }
+            updateCurrentTime() {
+                const currentTime = this.calculator.getCurrentTime();
+                document.getElementById('current-time').textContent = currentTime;
+            }
 
-        // 显示消息
-        function displayMessage(sender, message, type = "user") {
-            const messageElement = document.createElement('div');
-            const senderElement = document.createElement('div');
-            const contentElement = document.createElement('div');
-            const timestampElement = document.createElement('div');
-            
-            senderElement.className = 'sender';
-            senderElement.textContent = sender + ":";
-            
-            contentElement.textContent = message;
-            
-            const now = new Date();
-            timestampElement.className = 'timestamp';
-            timestampElement.textContent = now.toLocaleTimeString();
-            
-            messageElement.appendChild(senderElement);
-            messageElement.appendChild(contentElement);
-            messageElement.appendChild(timestampElement);
-            
-            if (type === "user") {
-                messageElement.className = 'message user-message';
-            } else if (type === "bot") {
-                messageElement.className = 'message bot-message';
-            } else {
-                messageElement.className = 'message system-message';
-            }
-            
-            chatHistoryElement.appendChild(messageElement);
-            chatHistoryElement.scrollTop = chatHistoryElement.scrollHeight;
-            
-            // 保存到聊天历史
-            if (type !== "system") {
-                chatHistory.push({
-                    sender: sender,
-                    message: message,
-                    type: type,
-                    timestamp: now.toISOString()
-                });
-                localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-            }
-        }
+            calculateTime() {
+                try {
+                    const baseTime = document.getElementById('base-time').value.trim();
+                    const duration = document.getElementById('duration').value.trim();
 
-        // 处理用户输入
-        function processInput() {
-            const userInput = userInputElement.value.trim();
-            userInputElement.value = '';
-            
-            if (!userInput) return;
-            
-            displayMessage("你", userInput, "user");
-            lastUserInput = userInput;
-            
-            if (teachMode) {
-                teachResponse(userInput);
-                teachMode = false;
-                return;
-            }
-            
-            if (forgetMode) {
-                forgetResponse(userInput);
-                forgetMode = false;
-                return;
-            }
-            
-            if (userInput.toLowerCase() === "再见" || userInput.toLowerCase() === "拜拜" || userInput.toLowerCase() === "退出") {
-                const goodbyeMsg = getRandomItem(botData.responses["再见"]);
-                displayMessage("机器人", goodbyeMsg, "bot");
-                setTimeout(() => {
-                    window.close(); // 注意：这可能在大多数浏览器中不起作用
-                    alert("聊天结束，您可以安全关闭此标签页。");
-                }, 1500);
-                return;
-            }
-            
-            // 获取机器人回复
-            const botResponse = generateResponse(userInput);
-            displayMessage("机器人", botResponse, "bot");
-            
-            // 随机提问
-            if (Math.random() > 0.7) {
-                setTimeout(askRandomQuestion, 1500);
-            }
-        }
+                    if (!duration) {
+                        alert("请输入要增加的时间");
+                        return;
+                    }
 
-        // 生成回复
-        function generateResponse(userInput) {
-            // 检查学习过的回答
-            const learnedResponse = getLearnedResponse(userInput);
-            if (learnedResponse) return learnedResponse;
-            
-            // 标准回答
-            const userInputLower = userInput.toLowerCase();
-            if (containsAny(userInputLower, ["你好", "嗨", "哈喽"])) {
-                return getRandomItem(botData.responses["你好"]);
-            } else if (userInputLower.includes("天气")) {
-                return getRandomItem(botData.responses["天气"]);
-            } else if (containsAny(userInputLower, ["名字", "称呼", "你是谁"])) {
-                return getRandomItem(botData.responses["名字"]);
-            } else if (userInput.includes("?")) {
-                return `${getRandomItem(["好问题！", "让我想想...", "这问题真有深度！"])} ${getRandomItem(botData.questions)}`;
-            } else {
-                return `${getRandomItem(["有趣的观点！", "我从没这样想过...", "作为一个AI，我对这个看法很感兴趣！"])} ${getRandomItem(botData.questions)}`;
-            }
-        }
+                    // 执行计算
+                    const result = this.calculator.increaseTime(baseTime, duration);
 
-        // 获取学习过的回答
-        function getLearnedResponse(userInput) {
-            userInput = userInput.toLowerCase();
-            
-            // 检查完全匹配
-            if (learnedResponses[userInput]) {
-                // 更新使用计数
-                learnedResponses[userInput].usedCount = (learnedResponses[userInput].usedCount || 0) + 1;
-                localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
-                return learnedResponses[userInput].response;
-            }
-            
-            // 检查部分匹配
-            for (const key in learnedResponses) {
-                if (userInput.includes(key) || key.includes(userInput)) {
-                    // 更新使用计数
-                    learnedResponses[key].usedCount = (learnedResponses[key].usedCount || 0) + 1;
-                    localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
-                    return learnedResponses[key].response;
+                    // 显示结果
+                    this.displayResults(baseTime, duration, result);
+
+                } catch (e) {
+                    alert(`计算错误: ${e.message}`);
                 }
             }
-            
-            return null;
-        }
 
-        // 进入教学模式
-        function enterTeachMode() {
-            teachMode = true;
-            displayMessage("系统", "教学模式已激活！请输入你想让我学习的回答，然后按发送。", "system");
-        }
-
-        // 教学回复
-        function teachResponse(response) {
-            if (!response) {
-                displayMessage("系统", "教学取消，没有提供回答。", "system");
-                return;
+            quickCalculateCustom() {
+                const duration = document.getElementById('quick-duration').value.trim();
+                if (!duration) {
+                    alert("请输入要增加的时间");
+                    return;
+                }
+                this.performQuickCalculation(duration);
             }
-            
-            if (!lastUserInput) {
-                displayMessage("系统", "没有之前的对话可以学习。请先发送一条消息再尝试教学。", "system");
-                return;
+
+            performQuickCalculation(duration) {
+                try {
+                    const result = this.calculator.increaseTime("", duration);
+                    this.displayQuickResults(duration, result);
+                } catch (e) {
+                    alert(`计算错误: ${e.message}`);
+                }
             }
-            
-            const key = lastUserInput.toLowerCase();
-            
-            if (learnedResponses[key]) {
-                // 更新现有记录
-                learnedResponses[key].response = response;
-                learnedResponses[key].learnedAt = new Date().toISOString();
-                displayMessage("系统", `我已经更新了对'${lastUserInput}'的回答！`, "system");
-            } else {
-                // 创建新记录
-                learnedResponses[key] = {
-                    response: response,
-                    learnedAt: new Date().toISOString(),
-                    usedCount: 0
-                };
-                displayMessage("系统", `明白啦！下次你说'${lastUserInput}'，我会回答'${response}'！`, "system");
+
+            displayResults(baseTime, duration, result) {
+                const baseDisplay = !baseTime || baseTime.toLowerCase() === "now" ? "当前时间" : baseTime;
+
+                let output = `
+=== 时间计算器结果 ===
+
+ 基础时间: ${baseDisplay}
+ 增加时长: ${duration}
+ 结果时间: ${this.calculator.formatResult(result)}
+
+ 多种格式输出:
+   • 标准格式: ${this.calculator.formatResult(result)}
+   • 中文格式: ${this.calculator.formatResult(result, '%Y年%m月%d日 %H时%M分%S秒')}
+   • 紧凑格式: ${this.calculator.formatResult(result, '%Y%m%d_%H%M%S')}
+   • 仅日期: ${this.calculator.formatResult(result, '%Y-%m-%d')}
+   • 仅时间: ${this.calculator.formatResult(result, '%H:%M:%S')}
+
+ 时间差信息:
+`;
+
+                // 计算时间差
+                const timeDiff = result.getTime() - new Date().getTime();
+                if (timeDiff > 0) {
+                    output += `   • 距离现在还有: ${this.formatTimedelta(timeDiff)}`;
+                } else {
+                    output += `   • 已经过去了: ${this.formatTimedelta(-timeDiff)}`;
+                }
+
+                document.getElementById('results-display').textContent = output;
             }
-            
-            localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
-        }
 
-        // 进入忘记模式
-        function enterForgetMode() {
-            forgetMode = true;
-            displayMessage("系统", "忘记模式已激活！请输入你想让我忘记的内容，然后按发送。", "system");
-        }
+            displayQuickResults(duration, result) {
+                const currentTime = this.calculator.getCurrentTime();
 
-        // 忘记回复
-        function forgetResponse(toForget) {
-            if (!toForget) {
-                displayMessage("系统", "忘记操作取消，没有提供内容。", "system");
-                return;
+                let output = `
+=== 快速计算结果 ===
+
+ 当前时间: ${currentTime}
+ 增加时长: ${duration}
+ 结果时间: ${this.calculator.formatResult(result)}
+
+ 结果格式:
+   • ${this.calculator.formatResult(result)}
+   • ${this.calculator.formatResult(result, '%Y年%m月%d日 %H时%M分%S秒')}
+
+ 时间差: ${this.formatTimedelta(result.getTime() - new Date().getTime())}
+`;
+                document.getElementById('results-display').textContent = output;
             }
-            
-            const key = toForget.toLowerCase();
-            
-            if (learnedResponses[key]) {
-                delete learnedResponses[key];
-                localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
-                displayMessage("系统", `已忘记关于'${toForget}'的记忆。我现在的记忆比金鱼还短！`, "system");
-            } else {
-                displayMessage("系统", `我好像没学过'${toForget}'...我的记忆空空如也！`, "system");
+
+            formatTimedelta(ms) {
+                const totalSeconds = Math.floor(ms / 1000);
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                const parts = [];
+                if (days > 0) {
+                    parts.push(`${days}天`);
+                }
+                if (hours > 0) {
+                    parts.push(`${hours}小时`);
+                }
+                if (minutes > 0) {
+                    parts.push(`${minutes}分钟`);
+                }
+                if (seconds > 0 || !parts) {
+                    parts.push(`${seconds}秒`);
+                }
+
+                return parts.join(" ");
             }
         }
 
-        // 随机提问
-        function askRandomQuestion() {
-            const question = getRandomItem(botData.questions);
-            displayMessage("机器人", `${getRandomItem(["突然想到...", "我很好奇...", "顺便问一下..."])} ${question}`, "bot");
-        }
-
-        // 清除聊天历史
-        function clearChatHistory() {
-            if (confirm("确定要清除所有聊天历史吗？")) {
-                chatHistory = [];
-                localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-                chatHistoryElement.innerHTML = '';
-                displayMessage("系统", "聊天历史已清除！", "system");
-                showWelcomeMessage();
-            }
-        }
-
-        // 渲染聊天历史
-        function renderChatHistory() {
-            chatHistory.forEach(msg => {
-                displayMessage(msg.sender, msg.message, msg.type);
-            });
-        }
-
-        // 辅助函数
-        function getRandomItem(array) {
-            return array[Math.floor(Math.random() * array.length)];
-        }
-        
-        function containsAny(str, substrings) {
-            return substrings.some(sub => str.includes(sub));
-        }
-
-        // 事件监听器
-        sendButton.addEventListener('click', processInput);
-        userInputElement.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') processInput();
-        });
-        
-        teachButton.addEventListener('click', enterTeachMode);
-        forgetButton.addEventListener('click', enterForgetMode);
-        clearButton.addEventListener('click', clearChatHistory);
-        exitButton.addEventListener('click', function() {
-            if (confirm("确定要退出聊天吗？")) {
-                window.close(); // 注意：这可能在大多数浏览器中不起作用
-                alert("聊天结束，您可以安全关闭此标签页。");
-            }
+        // 初始化应用
+        document.addEventListener('DOMContentLoaded', () => {
+            new TimeCalculatorUI();
         });
     </script>
 </body>
