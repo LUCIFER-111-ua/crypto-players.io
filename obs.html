@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBS点歌平台 - OBS视图</title>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B5CF6',
+            secondary: '#EC4899',
+            accent: '#06B6D4',
+            dark: '#0F172A',
+            'dark-light': '#1E293B',
+            'neon-pink': '#FF00FF',
+            'neon-blue': '#00FFFF',
+            'neon-purple': '#9D00FF'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 3s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 5px theme("colors.neon-purple"), 0 0 10px theme("colors.neon-purple")' },
+              '100%': { boxShadow: '0 0 10px theme("colors.neon-purple"), 0 0 20px theme("colors.neon-purple"), 0 0 30px theme("colors.neon-purple")' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow-neon {
+        text-shadow: 0 0 5px theme('colors.neon-purple'), 0 0 10px theme('colors.neon-purple');
+      }
+      .text-shadow-pink {
+        text-shadow: 0 0 5px theme('colors.neon-pink'), 0 0 10px theme('colors.neon-pink');
+      }
+      .text-shadow-blue {
+        text-shadow: 0 0 5px theme('colors.neon-blue'), 0 0 10px theme('colors.neon-blue');
+      }
+      .bg-glass {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .border-glow {
+        box-shadow: 0 0 5px theme('colors.neon-purple'), 0 0 10px theme('colors.neon-purple');
+      }
+      .border-glow-pink {
+        box-shadow: 0 0 5px theme('colors.neon-pink'), 0 0 10px theme('colors.neon-pink');
+      }
+      .border-glow-blue {
+        box-shadow: 0 0 5px theme('colors.neon-blue'), 0 0 10px theme('colors.neon-blue');
+      }
+      .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hidden {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-transparent text-white font-sans">
+  <!-- 主容器 -->
+  <div class="w-full h-full p-4">
+    <!-- 标题栏 -->
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center space-x-2">
+        <i class="fa fa-music text-neon-purple text-xl"></i>
+        <h1 class="text-lg font-bold">
+          <span class="text-neon-purple">点歌</span>
+          <span class="text-neon-pink">列表</span>
+        </h1>
+      </div>
+      <div class="text-xs text-gray-400" id="lastUpdated">最后更新: 刚刚</div>
+    </div>
+    
+    <!-- 播放中 -->
+    <div class="mb-4">
+      <div id="playingContainer" class="bg-glass rounded-lg p-3 border border-neon-purple border-glow hidden">
+        <div class="flex items-center space-x-2 mb-1">
+          <div class="w-2 h-2 bg-neon-pink rounded-full animate-pulse"></div>
+          <span class="text-sm text-neon-pink font-medium">播放中</span>
+        </div>
+        <div id="playingSong" class="font-bold text-neon-purple text-shadow-neon"></div>
+        <div id="playingArtist" class="text-sm text-gray-300"></div>
+        <div class="flex justify-between items-center mt-1">
+          <div id="playingUser" class="text-xs text-gray-400"></div>
+          <div class="flex space-x-1">
+            <i class="fa fa-heart text-neon-pink"></i>
+            <span id="playingLikes" class="text-xs text-neon-pink">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 待播放列表 -->
+    <div>
+      <div class="text-sm text-neon-blue font-medium mb-2 flex items-center">
+        <i class="fa fa-list-ul mr-1"></i> 待播放 (<span id="queueCount">0</span>)
+      </div>
+      <div id="queueContainer" class="bg-glass rounded-lg border border-gray-700">
+        <div id="queueList" class="max-h-60 overflow-y-auto scrollbar-hidden">
+          <!-- 队列歌曲将动态插入 -->
+          <div id="emptyQueue" class="p-4 text-center text-gray-500 text-sm">
+            暂无待播放歌曲
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 获取数据
+    function fetchSongRequests() {
+      // 从localStorage获取数据
+      const songRequests = JSON.parse(localStorage.getItem('songRequests')) || [];
+      
+      // 更新最后更新时间
+      document.getElementById('lastUpdated').textContent = `最后更新: ${formatTime(new Date())}`;
+      
+      // 处理播放中的歌曲
+      const playing = songRequests.find(req => req.status === 'playing');
+      const playingContainer = document.getElementById('playingContainer');
+      const emptyQueue = document.getElementById('emptyQueue');
+      
+      if (playing) {
+        document.getElementById('playingSong').textContent = playing.title;
+        document.getElementById('playingArtist').textContent = playing.artist;
+        document.getElementById('playingUser').textContent = `点歌: ${playing.requestedBy}`;
+        document.getElementById('playingLikes').textContent = Math.floor(Math.random() * 20); // 模拟点赞数
+        playingContainer.classList.remove('hidden');
+      } else {
+        playingContainer.classList.add('hidden');
+      }
+      
+      // 处理队列
+      const queue = songRequests.filter(req => req.status === 'pending');
+      document.getElementById('queueCount').textContent = queue.length;
+      
+      if (queue.length > 0) {
+        emptyQueue.classList.add('hidden');
+        
+        const queueList = document.getElementById('queueList');
+        queueList.innerHTML = '';
+        
+        queue.forEach((req, index) => {
+          const songItem = document.createElement('div');
+          songItem.className = 'p-3 border-b border-gray-700 hover:bg-dark-light transition-all';
+          
+          songItem.innerHTML = `
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-medium">${req.title}</div>
+                <div class="text-xs text-gray-400">${req.artist}</div>
+              </div>
+              <div class="text-xs text-gray-500">${formatTime(req.requestTime)}</div>
+            </div>
+            <div class="flex justify-between items-center mt-1">
+              <div class="text-xs text-gray-400">${req.requestedBy}</div>
+              <div class="flex space-x-1">
+                <i class="fa fa-heart-o text-gray-500"></i>
+                <span class="text-xs text-gray-500">${Math.floor(Math.random() * 10)}</span>
+              </div>
+            </div>
+          `;
+          
+          queueList.appendChild(songItem);
+        });
+      } else {
+        emptyQueue.classList.remove('hidden');
+      }
+    }
+    
+    // 格式化时间
+    function formatTime(timeStr) {
+      const date = new Date(timeStr);
+      const now = new Date();
+      const diff = now - date;
+      
+      if (diff < 60000) { // 小于1分钟
+        return '刚刚';
+      } else if (diff < 3600000) { // 小于1小时
+        return `${Math.floor(diff / 60000)}分钟前`;
+      } else if (diff < 86400000) { // 小于1天
+        return `${Math.floor(diff / 3600000)}小时前`;
+      } else {
+        return date.toLocaleDateString();
+      }
+    }
+    
+    // 初始加载
+    fetchSongRequests();
+    
+    // 定期刷新（每5秒）
+    setInterval(fetchSongRequests, 5000);
+    
+    // 监听storage事件（当其他标签页更新数据时）
+    window.addEventListener('storage', function(e) {
+      if (e.key === 'songRequests') {
+        fetchSongRequests();
+      }
+    });
+  </script>
+</body>
+</html>
