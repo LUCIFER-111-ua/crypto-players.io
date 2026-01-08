@@ -1,622 +1,1142 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBS点歌台</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft Yahei", sans-serif;
-        }
-
-        body {
-            background: #1a1a1a;
-            color: #fff;
-            min-height: 100vh;
-        }
-
-        /* 前台展示区（OBS捕获区域） */
-        .display-area {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
-        }
-
-        .current-song {
-            font-size: 4vw;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #ff6b81;
-            text-shadow: 0 0 10px rgba(255, 107, 129, 0.5);
-        }
-
-        .next-song {
-            font-size: 2.5vw;
-            color: #70a1ff;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .player-status {
-            font-size: 1.5vw;
-            color: #2ed573;
-            text-align: center;
-        }
-
-        /* 后台管理区 */
-        .admin-panel {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 400px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #444;
-            z-index: 100;
-        }
-
-        .admin-title {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #fff;
-            border-bottom: 1px solid #444;
-            padding-bottom: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #ccc;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background: #333;
-            color: #fff;
-            outline: none;
-        }
-
-        button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            background: #007bff;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        .btn-play {
-            background: #28a745;
-        }
-
-        .btn-play:hover {
-            background: #218838;
-        }
-
-        .btn-delete {
-            background: #dc3545;
-        }
-
-        .btn-delete:hover {
-            background: #c82333;
-        }
-
-        .btn-connect {
-            background: #17a2b8;
-        }
-
-        .btn-connect:hover {
-            background: #138496;
-        }
-
-        .song-list {
-            margin-top: 20px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .song-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #444;
-            margin-bottom: 5px;
-        }
-
-        .song-info {
-            flex: 1;
-        }
-
-        .song-actions {
-            display: flex;
-            gap: 5px;
-        }
-
-        .danmu-log {
-            margin-top: 20px;
-            max-height: 150px;
-            overflow-y: auto;
-            font-size: 12px;
-            color: #ccc;
-            border-top: 1px solid #444;
-            padding-top: 10px;
-        }
-
-        /* 隐藏/显示管理面板按钮 */
-        .toggle-admin {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            z-index: 101;
-            display: none;
-        }
-
-        /* 适配小屏幕/OBS捕获 */
-        @media (max-width: 768px) {
-            .admin-panel {
-                display: none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBS点歌平台</title>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B5CF6',
+            secondary: '#EC4899',
+            accent: '#06B6D4',
+            dark: '#0F172A',
+            'dark-light': '#1E293B',
+            'neon-pink': '#FF00FF',
+            'neon-blue': '#00FFFF',
+            'neon-purple': '#9D00FF'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 3s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 5px theme("colors.neon-purple"), 0 0 10px theme("colors.neon-purple")' },
+              '100%': { boxShadow: '0 0 10px theme("colors.neon-purple"), 0 0 20px theme("colors.neon-purple"), 0 0 30px theme("colors.neon-purple")' },
             }
-
-            .toggle-admin {
-                display: block;
-            }
-
-            .current-song {
-                font-size: 6vw;
-            }
-
-            .next-song {
-                font-size: 4vw;
-            }
-
-            .player-status {
-                font-size: 3vw;
-            }
+          }
         }
-    </style>
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow-neon {
+        text-shadow: 0 0 5px theme('colors.neon-purple'), 0 0 10px theme('colors.neon-purple');
+      }
+      .text-shadow-pink {
+        text-shadow: 0 0 5px theme('colors.neon-pink'), 0 0 10px theme('colors.neon-pink');
+      }
+      .text-shadow-blue {
+        text-shadow: 0 0 5px theme('colors.neon-blue'), 0 0 10px theme('colors.neon-blue');
+      }
+      .bg-glass {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .border-glow {
+        box-shadow: 0 0 5px theme('colors.neon-purple'), 0 0 10px theme('colors.neon-purple');
+      }
+      .border-glow-pink {
+        box-shadow: 0 0 5px theme('colors.neon-pink'), 0 0 10px theme('colors.neon-pink');
+      }
+      .border-glow-blue {
+        box-shadow: 0 0 5px theme('colors.neon-blue'), 0 0 10px theme('colors.neon-blue');
+      }
+      .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hidden {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .danmaku {
+        position: absolute;
+        white-space: nowrap;
+        animation: danmaku-move 8s linear;
+      }
+      @keyframes danmaku-move {
+        from { transform: translateX(100%); }
+        to { transform: translateX(-100%); }
+      }
+    }
+  </style>
 </head>
-<body>
-    <!-- 前台展示区（OBS捕获） -->
-    <div class="display-area">
-        <div class="current-song" id="currentSong">
-            当前暂无播放歌曲
+<body class="bg-dark text-white min-h-screen font-sans">
+  <!-- 背景图 -->
+  <div class="fixed inset-0 z-0 opacity-20">
+    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/97be7216856245919f3e2bdd0ba89173~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=20260109020234E71D524EDFDE922968A0&rrcfp=f06b921b&x-expires=1770487384&x-signature=2IU1%2FWsKVmsax7ydA%2B0DSt7W9xM%3D" 
+         alt="音乐背景" 
+         class="w-full h-full object-cover">
+  </div>
+
+  <!-- 导航栏 -->
+  <nav class="bg-glass border-b border-gray-700 sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <i class="fa fa-music text-neon-purple text-2xl"></i>
+          <h1 class="text-xl font-bold text-white">
+            <span class="text-neon-purple">OBS</span>
+            <span class="text-neon-pink">点歌</span>
+            <span class="text-neon-blue">平台</span>
+          </h1>
         </div>
-        <div class="next-song" id="nextSong">
-            下一首：暂无待播歌曲
+        
+        <div class="flex space-x-4">
+          <button id="viewerBtn" class="px-4 py-2 rounded-md bg-primary text-white hover:bg-opacity-80 transition-all border-glow">
+            观众点歌
+          </button>
+          <button id="hostBtn" class="px-4 py-2 rounded-md bg-dark-light text-white hover:bg-gray-700 transition-all">
+            主播管理
+          </button>
+          <a href="./obs.html" target="_blank" class="px-4 py-2 rounded-md bg-accent text-white hover:bg-opacity-80 transition-all">
+            OBS视图
+          </a>
         </div>
-        <div class="player-status" id="playerStatus">
-            弹幕状态：未连接 | 播放器：未同步
-        </div>
+      </div>
     </div>
+  </nav>
 
-    <!-- 管理面板切换按钮 -->
-    <button class="toggle-admin" id="toggleAdmin">⚙️</button>
-
-    <!-- 后台管理区 -->
-    <div class="admin-panel" id="adminPanel">
-        <div class="admin-title">OBS点歌台</div>
-
-        <!-- 弹幕配置 -->
-        <div class="form-group">
-            <label for="roomId">直播间ID</label>
-            <input type="text" id="roomId" placeholder="输入B站直播间数字ID" value="">
+  <!-- 主内容区 -->
+  <main class="container mx-auto px-4 py-8 relative z-10">
+    <!-- 观众点歌视图 -->
+    <div id="viewerView" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- 左侧：点歌区 -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- 搜索框 -->
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-pink text-shadow-pink">歌曲搜索</h2>
+          <div class="flex space-x-2">
+            <input type="text" id="songSearch" placeholder="输入歌曲名或歌手..." 
+                  class="flex-1 bg-dark-light border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-neon-purple">
+            <button id="searchBtn" class="bg-primary hover:bg-opacity-80 px-4 py-2 rounded-md transition-all">
+              <i class="fa fa-search"></i> 搜索
+            </button>
+          </div>
+          
+          <!-- 搜索结果 -->
+          <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto scrollbar-hidden hidden">
+            <div class="space-y-2">
+              <!-- 搜索结果将动态插入 -->
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="danmuKeyword">点歌指令关键词</label>
-            <input type="text" id="danmuKeyword" value="点歌" placeholder="如：点歌、点唱">
+        
+        <!-- 点歌表单 -->
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-blue text-shadow-blue">点歌</h2>
+          <form id="requestForm" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-1">歌曲名</label>
+              <input type="text" id="songTitle" required 
+                    class="w-full bg-dark-light border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-neon-blue">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-1">歌手</label>
+              <input type="text" id="songArtist" required 
+                    class="w-full bg-dark-light border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-neon-blue">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-1">你的昵称</label>
+              <input type="text" id="userName" required 
+                    class="w-full bg-dark-light border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-neon-blue">
+            </div>
+            <button type="submit" class="w-full bg-secondary hover:bg-opacity-80 py-2 rounded-md transition-all text-lg font-semibold animate-pulse-slow">
+              <i class="fa fa-paper-plane mr-2"></i> 提交点歌
+            </button>
+          </form>
         </div>
-        <button id="connectDanmuBtn" class="btn-connect">连接弹幕</button>
-
-        <!-- 添加歌曲表单 -->
-        <div class="form-group">
-            <label for="songName">歌曲名称</label>
-            <input type="text" id="songName" placeholder="请输入歌曲名">
+        
+        <!-- 弹幕点歌 -->
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-purple text-shadow-neon">弹幕点歌</h2>
+          <div class="mb-4">
+            <input type="text" id="danmakuInput" placeholder="发送弹幕，格式：点歌 歌曲名 - 歌手" 
+                  class="w-full bg-dark-light border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:border-neon-purple">
+          </div>
+          <button id="sendDanmakuBtn" class="w-full bg-neon-purple bg-opacity-20 hover:bg-opacity-30 py-2 rounded-md transition-all border border-neon-purple">
+            <i class="fa fa-comment mr-2"></i> 发送弹幕
+          </button>
+          
+          <!-- 弹幕展示区 -->
+          <div id="danmakuContainer" class="mt-4 h-40 relative overflow-hidden bg-dark bg-opacity-50 rounded-md">
+            <!-- 弹幕将动态插入 -->
+          </div>
         </div>
-        <div class="form-group">
-            <label for="singerName">歌手名称</label>
-            <input type="text" id="singerName" placeholder="请输入歌手名">
+      </div>
+      
+      <!-- 右侧：热门歌曲 -->
+      <div class="space-y-6">
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-pink text-shadow-pink">热门歌曲</h2>
+          <div class="space-y-3">
+            <div id="hotSongsList" class="space-y-2">
+              <!-- 热门歌曲将动态插入 -->
+            </div>
+          </div>
         </div>
-        <button id="addSongBtn">添加歌曲</button>
-
-        <!-- 歌曲列表 -->
-        <div class="song-list" id="songList">
-            <!-- 歌曲项会通过JS动态生成 -->
+        
+        <!-- 点歌统计 -->
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-blue text-shadow-blue">点歌统计</h2>
+          <canvas id="statsChart" height="200"></canvas>
         </div>
-
-        <!-- 弹幕日志 -->
-        <div class="danmu-log" id="danmuLog">
-            等待连接弹幕...
+        
+        <!-- 最近点歌 -->
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-purple text-shadow-neon">最近点歌</h2>
+          <div id="recentRequests" class="space-y-2 max-h-60 overflow-y-auto scrollbar-hidden">
+            <!-- 最近点歌将动态插入 -->
+          </div>
         </div>
+      </div>
     </div>
+    
+    <!-- 主播管理视图 -->
+    <div id="hostView" class="hidden space-y-8">
+      <!-- 歌曲管理 -->
+      <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-neon-pink text-shadow-pink">歌曲管理</h2>
+          <div class="flex space-x-2">
+            <button id="refreshListBtn" class="px-3 py-1 rounded-md bg-accent text-white hover:bg-opacity-80 transition-all">
+              <i class="fa fa-refresh mr-1"></i> 刷新
+            </button>
+            <button id="clearCompletedBtn" class="px-3 py-1 rounded-md bg-red-500 text-white hover:bg-opacity-80 transition-all">
+              <i class="fa fa-trash mr-1"></i> 清除已完成
+            </button>
+          </div>
+        </div>
+        
+        <!-- 待播放列表 -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3 text-neon-blue text-shadow-blue">待播放 (<span id="pendingCount">0</span>)</h3>
+          <div id="pendingList" class="space-y-2 max-h-80 overflow-y-auto scrollbar-hidden">
+            <!-- 待播放歌曲将动态插入 -->
+          </div>
+        </div>
+        
+        <!-- 播放中 -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-3 text-neon-purple text-shadow-neon">播放中</h3>
+          <div id="playingList" class="space-y-2">
+            <!-- 播放中歌曲将动态插入 -->
+          </div>
+        </div>
+        
+        <!-- 已完成 -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-gray-400">已完成 (<span id="completedCount">0</span>)</h3>
+          <div id="completedList" class="space-y-2 max-h-60 overflow-y-auto scrollbar-hidden">
+            <!-- 已完成歌曲将动态插入 -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- 数据统计 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-blue text-shadow-blue">点歌统计</h2>
+          <canvas id="hostStatsChart" height="250"></canvas>
+        </div>
+        
+        <div class="bg-glass rounded-lg p-6 border border-gray-700 shadow-lg">
+          <h2 class="text-xl font-bold mb-4 text-neon-pink text-shadow-pink">热门歌手</h2>
+          <canvas id="artistChart" height="250"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
 
-    <script>
-        // 全局状态
-        let songQueue = JSON.parse(localStorage.getItem('obsSongQueue')) || [];
-        let currentPlayingIndex = parseInt(localStorage.getItem('obsCurrentSongIndex')) || -1;
-        let danmuLogs = [];
-        let isDanmuConnected = false;
-        let danmuWebSocket = null;
-        let playerSyncTimer = null;
+  <!-- 点歌成功提示 -->
+  <div id="successToast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-500 z-50">
+    <div class="flex items-center">
+      <i class="fa fa-check-circle text-2xl mr-2"></i>
+      <span>点歌成功！感谢您的请求 🎵</span>
+    </div>
+  </div>
 
-        // DOM元素
-        const roomIdInput = document.getElementById('roomId');
-        const danmuKeywordInput = document.getElementById('danmuKeyword');
-        const connectDanmuBtn = document.getElementById('connectDanmuBtn');
-        const addSongBtn = document.getElementById('addSongBtn');
-        const songNameInput = document.getElementById('songName');
-        const singerNameInput = document.getElementById('singerName');
-        const songListEl = document.getElementById('songList');
-        const currentSongEl = document.getElementById('currentSong');
-        const nextSongEl = document.getElementById('nextSong');
-        const playerStatusEl = document.getElementById('playerStatus');
-        const danmuLogEl = document.getElementById('danmuLog');
-        const adminPanel = document.getElementById('adminPanel');
-        const toggleAdminBtn = document.getElementById('toggleAdmin');
+  <!-- 弹幕点歌提示 -->
+  <div id="danmakuToast" class="fixed bottom-4 right-4 bg-neon-purple bg-opacity-80 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-500 z-50">
+    <div class="flex items-center">
+      <i class="fa fa-comment text-2xl mr-2"></i>
+      <span>弹幕发送成功！</span>
+    </div>
+  </div>
 
-        // 初始化
-        init();
+  <script>
+    // 模拟歌曲数据库
+    const songDatabase = [
+      { title: "起风了", artist: "买辣椒也用券" },
+      { title: "海阔天空", artist: "Beyond" },
+      { title: "成都", artist: "赵雷" },
+      { title: "光年之外", artist: "邓紫棋" },
+      { title: "追光者", artist: "岑宁儿" },
+      { title: "小幸运", artist: "田馥甄" },
+      { title: "Shape of You", artist: "Ed Sheeran" },
+      { title: "Let it Go", artist: "Idina Menzel" },
+      { title: "夜曲", artist: "周杰伦" },
+      { title: "告白气球", artist: "周杰伦" },
+      { title: "演员", artist: "薛之谦" },
+      { title: "倒带", artist: "周杰伦" },
+      { title: "晴天", artist: "周杰伦" },
+      { title: "后来", artist: "刘若英" },
+      { title: "那些年", artist: "胡夏" },
+      { title: "我们的爱", artist: "FIR" },
+      { title: "泡沫", artist: "邓紫棋" },
+      { title: "江南", artist: "林俊杰" },
+      { title: "可惜没如果", artist: "林俊杰" },
+      { title: "曹操", artist: "林俊杰" }
+    ];
 
-        function init() {
-            // 加载保存的配置
-            const savedRoomId = localStorage.getItem('obsDanmuRoomId');
-            if (savedRoomId) {
-                roomIdInput.value = savedRoomId;
-            }
+    // 初始化数据
+    let songRequests = JSON.parse(localStorage.getItem('songRequests')) || [];
+    let danmakuList = JSON.parse(localStorage.getItem('danmakuList')) || [];
+    let statsData = JSON.parse(localStorage.getItem('statsData')) || {
+      songStats: [],
+      dailyRequests: {}
+    };
 
-            // 绑定事件
-            connectDanmuBtn.addEventListener('click', connectDanmu);
-            addSongBtn.addEventListener('click', addSong);
-            toggleAdminBtn.addEventListener('click', () => {
-                adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
-            });
+    // DOM元素
+    const viewerBtn = document.getElementById('viewerBtn');
+    const hostBtn = document.getElementById('hostBtn');
+    const viewerView = document.getElementById('viewerView');
+    const hostView = document.getElementById('hostView');
+    const songSearch = document.getElementById('songSearch');
+    const searchBtn = document.getElementById('searchBtn');
+    const searchResults = document.getElementById('searchResults');
+    const requestForm = document.getElementById('requestForm');
+    const danmakuInput = document.getElementById('danmakuInput');
+    const sendDanmakuBtn = document.getElementById('sendDanmakuBtn');
+    const danmakuContainer = document.getElementById('danmakuContainer');
+    const hotSongsList = document.getElementById('hotSongsList');
+    const recentRequests = document.getElementById('recentRequests');
+    const refreshListBtn = document.getElementById('refreshListBtn');
+    const clearCompletedBtn = document.getElementById('clearCompletedBtn');
+    const pendingList = document.getElementById('pendingList');
+    const playingList = document.getElementById('playingList');
+    const completedList = document.getElementById('completedList');
+    const pendingCount = document.getElementById('pendingCount');
+    const completedCount = document.getElementById('completedCount');
+    const successToast = document.getElementById('successToast');
+    const danmakuToast = document.getElementById('danmakuToast');
 
-            // 渲染初始数据
-            renderSongList();
-            updateDisplayArea();
+    // 视图切换
+    viewerBtn.addEventListener('click', () => {
+      viewerView.classList.remove('hidden');
+      hostView.classList.add('hidden');
+      viewerBtn.classList.add('bg-primary', 'border-glow');
+      viewerBtn.classList.remove('bg-dark-light');
+      hostBtn.classList.add('bg-dark-light');
+      hostBtn.classList.remove('bg-primary', 'border-glow');
+    });
 
-            // 尝试自动连接弹幕（如果有保存的房间ID）
-            if (savedRoomId) {
-                setTimeout(connectDanmu, 2000);
-            }
+    hostBtn.addEventListener('click', () => {
+      viewerView.classList.add('hidden');
+      hostView.classList.remove('hidden');
+      hostBtn.classList.add('bg-primary', 'border-glow');
+      hostBtn.classList.remove('bg-dark-light');
+      viewerBtn.classList.add('bg-dark-light');
+      viewerBtn.classList.remove('bg-primary', 'border-glow');
+      updateHostView();
+      initHostCharts();
+    });
 
-            // 启动播放器状态同步
-            startPlayerSync();
+    // 搜索功能
+    searchBtn.addEventListener('click', performSearch);
+    songSearch.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+
+    function performSearch() {
+      const query = songSearch.value.toLowerCase().trim();
+      if (!query) {
+        searchResults.classList.add('hidden');
+        return;
+      }
+
+      const results = songDatabase.filter(song => 
+        song.title.toLowerCase().includes(query) || 
+        song.artist.toLowerCase().includes(query)
+      );
+
+      if (results.length > 0) {
+        const resultsHTML = results.map(song => `
+          <div class="p-2 hover:bg-dark-light rounded-md cursor-pointer transition-all flex justify-between items-center" 
+               onclick="selectSong('${song.title}', '${song.artist}')">
+            <div>
+              <div class="font-medium">${song.title}</div>
+              <div class="text-sm text-gray-400">${song.artist}</div>
+            </div>
+            <button class="text-neon-purple hover:text-neon-pink transition-colors">
+              <i class="fa fa-plus-circle"></i>
+            </button>
+          </div>
+        `).join('');
+        
+        searchResults.querySelector('.space-y-2').innerHTML = resultsHTML;
+        searchResults.classList.remove('hidden');
+      } else {
+        searchResults.querySelector('.space-y-2').innerHTML = `
+          <div class="p-2 text-center text-gray-400">未找到相关歌曲</div>
+        `;
+        searchResults.classList.remove('hidden');
+      }
+    }
+
+    // 选择歌曲
+    window.selectSong = function(title, artist) {
+      document.getElementById('songTitle').value = title;
+      document.getElementById('songArtist').value = artist;
+      searchResults.classList.add('hidden');
+      songSearch.value = '';
+      
+      // 滚动到点歌表单
+      document.getElementById('requestForm').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    // 点歌表单提交
+    requestForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const title = document.getElementById('songTitle').value.trim();
+      const artist = document.getElementById('songArtist').value.trim();
+      const userName = document.getElementById('userName').value.trim();
+      
+      if (title && artist && userName) {
+        addSongRequest(title, artist, userName, 'form');
+        requestForm.reset();
+        
+        // 显示成功提示
+        successToast.classList.remove('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          successToast.classList.add('translate-y-20', 'opacity-0');
+        }, 3000);
+      }
+    });
+
+    // 添加点歌请求
+    function addSongRequest(title, artist, userName, requestType) {
+      const newRequest = {
+        id: Date.now().toString(),
+        title,
+        artist,
+        requestedBy: userName,
+        requestTime: new Date(),
+        status: 'pending',
+        requestType
+      };
+      
+      songRequests.push(newRequest);
+      updateLocalStorage();
+      updateRecentRequests();
+      updateHotSongs();
+      updateStats();
+    }
+
+    // 弹幕功能
+    sendDanmakuBtn.addEventListener('click', sendDanmaku);
+    danmakuInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        sendDanmaku();
+      }
+    });
+
+    function sendDanmaku() {
+      const content = danmakuInput.value.trim();
+      if (!content) return;
+      
+      const userName = generateRandomName();
+      const newDanmaku = {
+        id: Date.now().toString(),
+        user: userName,
+        content,
+        timestamp: new Date(),
+        isSongRequest: false,
+        parsedSong: null
+      };
+      
+      // 检查是否为点歌弹幕
+      const songRequestPattern = /点歌\s+(.+?)\s*[-–—]\s*(.+)/;
+      const match = content.match(songRequestPattern);
+      
+      if (match) {
+        newDanmaku.isSongRequest = true;
+        newDanmaku.parsedSong = {
+          title: match[1].trim(),
+          artist: match[2].trim()
+        };
+        
+        // 自动添加到点歌列表
+        addSongRequest(match[1].trim(), match[2].trim(), userName, 'danmaku');
+      }
+      
+      danmakuList.push(newDanmaku);
+      if (danmakuList.length > 100) {
+        danmakuList.shift(); // 保持弹幕数量在合理范围
+      }
+      
+      updateLocalStorage();
+      displayDanmaku(newDanmaku);
+      danmakuInput.value = '';
+      
+      // 显示弹幕发送成功提示
+      danmakuToast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        danmakuToast.classList.add('translate-y-20', 'opacity-0');
+      }, 2000);
+    }
+
+    // 显示弹幕
+    function displayDanmaku(danmaku) {
+      const danmakuEl = document.createElement('div');
+      danmakuEl.className = 'danmaku';
+      danmakuEl.style.top = `${Math.random() * 80}%`;
+      danmakuEl.style.color = danmaku.isSongRequest ? '#FF00FF' : '#FFFFFF';
+      danmakuEl.style.fontWeight = danmaku.isSongRequest ? 'bold' : 'normal';
+      danmakuEl.innerHTML = `<span class="text-neon-blue">${danmaku.user}:</span> ${danmaku.content}`;
+      
+      danmakuContainer.appendChild(danmakuEl);
+      
+      // 动画结束后移除
+      setTimeout(() => {
+        danmakuEl.remove();
+      }, 8000);
+    }
+
+    // 生成随机用户名
+    function generateRandomName() {
+      const adjectives = ['快乐的', '可爱的', '酷酷的', '神秘的', '优雅的', '勇敢的', '聪明的', '温柔的'];
+      const nouns = ['小猫', '小狗', '兔子', '熊猫', '狐狸', '企鹅', '海豚', '星星'];
+      const randomNum = Math.floor(Math.random() * 1000);
+      
+      const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+      const noun = nouns[Math.floor(Math.random() * nouns.length)];
+      
+      return `${adj}${noun}${randomNum}`;
+    }
+
+    // 更新最近点歌
+    function updateRecentRequests() {
+      const recent = songRequests
+        .sort((a, b) => new Date(b.requestTime) - new Date(a.requestTime))
+        .slice(0, 10);
+      
+      if (recent.length > 0) {
+        const recentHTML = recent.map(req => `
+          <div class="p-2 hover:bg-dark-light rounded-md transition-all">
+            <div class="font-medium">${req.title}</div>
+            <div class="text-sm text-gray-400">${req.artist} - ${req.requestedBy}</div>
+            <div class="text-xs text-gray-500">${formatTime(req.requestTime)}</div>
+          </div>
+        `).join('');
+        
+        recentRequests.innerHTML = recentHTML;
+      } else {
+        recentRequests.innerHTML = `<div class="p-2 text-center text-gray-400">暂无点歌记录</div>`;
+      }
+    }
+
+    // 更新热门歌曲
+    function updateHotSongs() {
+      // 统计歌曲请求次数
+      const songCounts = {};
+      songRequests.forEach(req => {
+        const key = `${req.title}-${req.artist}`;
+        songCounts[key] = (songCounts[key] || 0) + 1;
+      });
+      
+      // 转换为数组并排序
+      const hotSongs = Object.entries(songCounts)
+        .map(([key, count]) => {
+          const [title, artist] = key.split('-');
+          return { title, artist, count };
+        })
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
+      
+      if (hotSongs.length > 0) {
+        const hotSongsHTML = hotSongs.map((song, index) => `
+          <div class="p-2 hover:bg-dark-light rounded-md transition-all flex justify-between items-center cursor-pointer"
+               onclick="selectSong('${song.title}', '${song.artist}')">
+            <div class="flex items-center">
+              <span class="w-6 h-6 rounded-full bg-neon-purple flex items-center justify-center mr-2 text-sm">
+                ${index + 1}
+              </span>
+              <div>
+                <div class="font-medium">${song.title}</div>
+                <div class="text-sm text-gray-400">${song.artist}</div>
+              </div>
+            </div>
+            <span class="bg-dark-light px-2 py-1 rounded-full text-xs">
+              <i class="fa fa-fire text-neon-pink mr-1"></i> ${song.count}
+            </span>
+          </div>
+        `).join('');
+        
+        hotSongsList.innerHTML = hotSongsHTML;
+      } else {
+        hotSongsList.innerHTML = `<div class="p-2 text-center text-gray-400">暂无热门歌曲</div>`;
+      }
+    }
+
+    // 更新统计数据
+    function updateStats() {
+      // 更新每日请求数
+      const today = new Date().toISOString().split('T')[0];
+      statsData.dailyRequests[today] = (statsData.dailyRequests[today] || 0) + 1;
+      
+      // 更新歌曲统计
+      const lastRequest = songRequests[songRequests.length - 1];
+      if (lastRequest) {
+        const existingSong = statsData.songStats.find(
+          s => s.title === lastRequest.title && s.artist === lastRequest.artist
+        );
+        
+        if (existingSong) {
+          existingSong.requestCount++;
+        } else {
+          statsData.songStats.push({
+            title: lastRequest.title,
+            artist: lastRequest.artist,
+            requestCount: 1
+          });
         }
+        
+        // 按请求次数排序
+        statsData.songStats.sort((a, b) => b.requestCount - a.requestCount);
+      }
+      
+      updateLocalStorage();
+    }
 
-        // ==================== 弹幕监听模块（纯前端） ====================
-        function connectDanmu() {
-            // 关闭现有连接
-            if (danmuWebSocket) {
-                danmuWebSocket.close();
-                danmuWebSocket = null;
-                isDanmuConnected = false;
-            }
+    // 更新本地存储
+    function updateLocalStorage() {
+      localStorage.setItem('songRequests', JSON.stringify(songRequests));
+      localStorage.setItem('danmakuList', JSON.stringify(danmakuList));
+      localStorage.setItem('statsData', JSON.stringify(statsData));
+    }
 
-            const roomId = roomIdInput.value.trim();
-            if (!roomId) {
-                alert('请输入有效的直播间ID！');
-                return;
-            }
+    // 格式化时间
+    function formatTime(timeStr) {
+      const date = new Date(timeStr);
+      const now = new Date();
+      const diff = now - date;
+      
+      if (diff < 60000) { // 小于1分钟
+        return '刚刚';
+      } else if (diff < 3600000) { // 小于1小时
+        return `${Math.floor(diff / 60000)}分钟前`;
+      } else if (diff < 86400000) { // 小于1天
+        return `${Math.floor(diff / 3600000)}小时前`;
+      } else {
+        return date.toLocaleDateString();
+      }
+    }
 
-            // 保存房间ID
-            localStorage.setItem('obsDanmuRoomId', roomId);
+    // 更新主播视图
+    function updateHostView() {
+      const pending = songRequests.filter(req => req.status === 'pending');
+      const playing = songRequests.filter(req => req.status === 'playing');
+      const completed = songRequests.filter(req => req.status === 'completed');
+      
+      pendingCount.textContent = pending.length;
+      completedCount.textContent = completed.length;
+      
+      // 更新待播放列表
+      if (pending.length > 0) {
+        pendingList.innerHTML = pending.map(req => `
+          <div class="p-3 bg-dark-light rounded-md border border-gray-700 hover:border-neon-blue transition-all flex justify-between items-center"
+               draggable="true" data-id="${req.id}">
+            <div>
+              <div class="font-medium">${req.title}</div>
+              <div class="text-sm text-gray-400">${req.artist} - ${req.requestedBy}</div>
+              <div class="text-xs text-gray-500">${formatTime(req.requestTime)} ${req.requestType === 'danmaku' ? '(弹幕点歌)' : ''}</div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-neon-purple hover:text-neon-pink transition-colors" onclick="startPlaying('${req.id}')">
+                <i class="fa fa-play-circle text-xl"></i>
+              </button>
+              <button class="text-gray-400 hover:text-red-500 transition-colors" onclick="removeRequest('${req.id}')">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+        
+        // 添加拖拽功能
+        addDragAndDrop(pendingList);
+      } else {
+        pendingList.innerHTML = `<div class="p-3 text-center text-gray-400">暂无待播放歌曲</div>`;
+      }
+      
+      // 更新播放中列表
+      if (playing.length > 0) {
+        playingList.innerHTML = playing.map(req => `
+          <div class="p-3 bg-dark-light rounded-md border border-neon-purple border-glow transition-all flex justify-between items-center">
+            <div>
+              <div class="font-medium text-neon-purple">${req.title}</div>
+              <div class="text-sm text-gray-400">${req.artist} - ${req.requestedBy}</div>
+              <div class="text-xs text-gray-500">${formatTime(req.requestTime)}</div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-neon-blue hover:text-neon-pink transition-colors" onclick="completeSong('${req.id}')">
+                <i class="fa fa-check-circle text-xl"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        playingList.innerHTML = `<div class="p-3 text-center text-gray-400">当前没有播放中的歌曲</div>`;
+      }
+      
+      // 更新已完成列表
+      if (completed.length > 0) {
+        completedList.innerHTML = completed
+          .sort((a, b) => new Date(b.requestTime) - new Date(a.requestTime))
+          .map(req => `
+            <div class="p-3 bg-dark-light bg-opacity-50 rounded-md border border-gray-700 flex justify-between items-center">
+              <div>
+                <div class="font-medium text-gray-400">${req.title}</div>
+                <div class="text-sm text-gray-500">${req.artist} - ${req.requestedBy}</div>
+                <div class="text-xs text-gray-600">${formatTime(req.requestTime)}</div>
+              </div>
+              <button class="text-gray-500 hover:text-red-500 transition-colors" onclick="removeRequest('${req.id}')">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          `).join('');
+      } else {
+        completedList.innerHTML = `<div class="p-3 text-center text-gray-500">暂无已完成歌曲</div>`;
+      }
+    }
 
-            addDanmuLog(`正在连接B站直播间 ${roomId} 的弹幕...`);
-
-            try {
-                // B站弹幕Websocket接口（纯前端可访问）
-                const wsUrl = `wss://broadcastlv.chat.bilibili.com:2245/sub`;
-
-                danmuWebSocket = new WebSocket(wsUrl);
-
-                // 连接成功
-                danmuWebSocket.onopen = () => {
-                    addDanmuLog('弹幕服务器连接成功，正在验证...');
-
-                    // 发送认证数据包
-                    const authData = {
-                        uid: 0,
-                        roomid: parseInt(roomId),
-                        protover: 3,
-                        platform: 'web',
-                        type: 2
-                    };
-
-                    danmuWebSocket.send(JSON.stringify({
-                        op: 7,
-                        body: authData
-                    }));
-
-                    isDanmuConnected = true;
-                    updateDisplayArea();
-                };
-
-                // 接收弹幕消息
-                danmuWebSocket.onmessage = (event) => {
-                    // 解析B站弹幕协议
-                    try {
-                        const data = JSON.parse(event.data);
-
-                        // 处理弹幕消息
-                        if (data.op === 5) {
-                            data.body.forEach(packet => {
-                                if (packet.cmd === 'DANMU_MSG') {
-                                    handleDanmuMessage(packet.info[1], packet.info[2][1]);
-                                }
-                            });
-                        }
-                        // 处理欢迎消息
-                        else if (data.op === 8) {
-                            addDanmuLog('弹幕连接验证成功，开始接收弹幕...');
-                        }
-                    } catch (e) {
-                        // 二进制数据，忽略
-                    }
-                };
-
-                // 连接关闭
-                danmuWebSocket.onclose = () => {
-                    addDanmuLog('弹幕连接已断开，5秒后重试...');
-                    isDanmuConnected = false;
-                    updateDisplayArea();
-                    setTimeout(() => connectDanmu(), 5000);
-                };
-
-                // 连接错误
-                danmuWebSocket.onerror = (error) => {
-                    addDanmuLog(`弹幕连接错误: ${error.message}`);
-                    isDanmuConnected = false;
-                    updateDisplayArea();
-                };
-
-            } catch (error) {
-                addDanmuLog(`弹幕连接失败: ${error.message}`);
-                isDanmuConnected = false;
-                updateDisplayArea();
-            }
-        }
-
-        // 处理弹幕消息
-        function handleDanmuMessage(content, userName) {
-            addDanmuLog(`[${userName}] ${content}`);
-
-            // 获取点歌关键词
-            const keyword = danmuKeywordInput.value.trim() || '点歌';
-
-            // 解析点歌指令：如 "点歌 七里香" 或 "点歌-七里香"
-            const regex = new RegExp(`${keyword}\\s*[:：-]?\\s*(.+)`, 'i');
-            const match = content.match(regex);
-
-            if (match && match[1]) {
-                const songName = match[1].trim();
-                addDanmuLog(`识别到点歌指令: ${songName} (来自${userName})`);
-
-                // 自动添加到点歌列表
-                addSongFromDanmu(songName, userName);
-            }
-        }
-
-        // ==================== 点歌列表管理 ====================
-        // 从弹幕添加歌曲
-        function addSongFromDanmu(songName, userName) {
-            if (!songName) return;
-
-            // 添加到队列
-            songQueue.push({
-                name: songName,
-                singer: `弹幕点歌(${userName})`,
-                id: Date.now(),
-                fromDanmu: true,
-                user: userName
-            });
-
-            // 保存到本地存储
-            localStorage.setItem('obsSongQueue', JSON.stringify(songQueue));
-
-            // 更新UI
-            addDanmuLog(`已添加歌曲: ${songName}`);
-            renderSongList();
-            updateDisplayArea();
-        }
-
-        // 手动添加歌曲
-        function addSong() {
-            const songName = songNameInput.value.trim();
-            const singerName = singerNameInput.value.trim();
-
-            if (!songName) {
-                alert('请输入歌曲名称！');
-                return;
-            }
-
-            // 添加到队列
-            songQueue.push({
-                name: songName,
-                singer: singerName || '未知歌手',
-                id: Date.now(),
-                fromDanmu: false
-            });
-
-            // 保存到本地存储
-            localStorage.setItem('obsSongQueue', JSON.stringify(songQueue));
-
-            // 清空输入框
-            songNameInput.value = '';
-            singerNameInput.value = '';
-
-            // 更新UI
-            addDanmuLog(`手动添加歌曲: ${songName} - ${singerName || '未知歌手'}`);
-            renderSongList();
-            updateDisplayArea();
-        }
-
-        // 播放指定歌曲
-        function playSong(index) {
-            if (index < 0 || index >= songQueue.length) return;
-
-            currentPlayingIndex = index;
-
-            // 保存状态
-            localStorage.setItem('obsCurrentSongIndex', currentPlayingIndex);
-
-            // 记录当前播放歌曲到localStorage，供播放器同步
-            const song = songQueue[index];
-            localStorage.setItem('obsCurrentPlayingSong', JSON.stringify(song));
-
-            addDanmuLog(`标记播放: ${song.name} - ${song.singer}`);
-
-            // 更新UI
-            renderSongList();
-            updateDisplayArea();
-        }
-
-        // 删除指定歌曲
-        function deleteSong(index) {
-            if (index < 0 || index >= songQueue.length) return;
-
-            const deletedSong = songQueue[index];
-
-            // 如果删除的是当前播放的歌曲，重置当前播放索引
-            if (index === currentPlayingIndex) {
-                currentPlayingIndex = -1;
-                localStorage.removeItem('obsCurrentPlayingSong');
-            } else if (index < currentPlayingIndex) {
-                currentPlayingIndex--;
-            }
-
-            // 从队列中删除
-            songQueue.splice(index, 1);
-
-            // 保存状态
-            localStorage.setItem('obsSongQueue', JSON.stringify(songQueue));
-            localStorage.setItem('obsCurrentSongIndex', currentPlayingIndex);
-
-            // 更新UI
-            addDanmuLog(`删除歌曲: ${deletedSong.name}`);
-            renderSongList();
-            updateDisplayArea();
-        }
-
-        // ==================== UI渲染 ====================
-        // 渲染歌曲列表
-        function renderSongList() {
-            songListEl.innerHTML = '';
-
-            if (songQueue.length === 0) {
-                songListEl.innerHTML = '<div style="text-align: center; color: #ccc; padding: 10px;">暂无歌曲</div>';
-                return;
-            }
-
-            songQueue.forEach((song, index) => {
-                const isCurrent = index === currentPlayingIndex;
-
-                const songItem = document.createElement('div');
-                songItem.className = 'song-item';
-                songItem.innerHTML = `
-                    <div class="song-info" style="${isCurrent ? 'color: #ff6b81; font-weight: bold;' : ''}">
-                        ${isCurrent ? '[播放中] ' : ''}${song.name} - ${song.singer}
-                        ${song.fromDanmu ? '<span style="color: #70a1ff; font-size: 12px;">(弹幕)</span>' : ''}
-                    </div>
-                    <div class="song-actions">
-                        <button class="btn-play" onclick="playSong(${index})">播放</button>
-                        <button class="btn-delete" onclick="deleteSong(${index})">删除</button>
-                    </div>
-                `;
-
-                songListEl.appendChild(songItem);
-            });
-        }
-
-        // 更新展示区
-        function updateDisplayArea() {
-            // 更新当前播放歌曲
-            if (currentPlayingIndex >= 0 && currentPlayingIndex < songQueue.length) {
-                const currentSong = songQueue[currentPlayingIndex];
-                currentSongEl.textContent = `正在播放：${currentSong.name} - ${currentSong.singer}`;
+    // 添加拖拽排序功能
+    function addDragAndDrop(container) {
+      const items = container.querySelectorAll('[draggable="true"]');
+      let draggedItem = null;
+      
+      items.forEach(item => {
+        item.addEventListener('dragstart', function() {
+          draggedItem = this;
+          setTimeout(() => this.style.opacity = '0.5', 0);
+        });
+        
+        item.addEventListener('dragend', function() {
+          this.style.opacity = '1';
+          draggedItem = null;
+          
+          // 更新顺序
+          const newOrder = Array.from(container.querySelectorAll('[draggable="true"]'))
+            .map(item => item.dataset.id);
+          
+          // 重新排序请求列表
+          const reorderedRequests = [];
+          newOrder.forEach(id => {
+            const req = songRequests.find(r => r.id === id);
+            if (req) reorderedRequests.push(req);
+          });
+          
+          // 保留其他状态的请求
+          const otherRequests = songRequests.filter(req => req.status !== 'pending');
+          
+          // 合并并更新
+          songRequests = [...reorderedRequests, ...otherRequests];
+          updateLocalStorage();
+        });
+        
+        item.addEventListener('dragover', function(e) {
+          e.preventDefault();
+        });
+        
+        item.addEventListener('dragenter', function(e) {
+          e.preventDefault();
+          if (this !== draggedItem) {
+            this.classList.add('border-neon-pink');
+          }
+        });
+        
+        item.addEventListener('dragleave', function() {
+          this.classList.remove('border-neon-pink');
+        });
+        
+        item.addEventListener('drop', function() {
+          this.classList.remove('border-neon-pink');
+          
+          if (this !== draggedItem) {
+            const container = this.parentNode;
+            const draggedIndex = Array.from(container.children).indexOf(draggedItem);
+            const dropIndex = Array.from(container.children).indexOf(this);
+            
+            if (draggedIndex < dropIndex) {
+              container.insertBefore(draggedItem, this.nextSibling);
             } else {
-                currentSongEl.textContent = '当前暂无播放歌曲';
+              container.insertBefore(draggedItem, this);
             }
+          }
+        });
+      });
+    }
 
-            // 更新下一首歌曲
-            const nextIndex = currentPlayingIndex + 1;
-            if (nextIndex >= 0 && nextIndex < songQueue.length) {
-                const nextSong = songQueue[nextIndex];
-                nextSongEl.textContent = `下一首：${nextSong.name} - ${nextSong.singer}`;
-            } else {
-                nextSongEl.textContent = '下一首：暂无待播歌曲';
-            }
-
-            // 更新状态信息
-            let statusText = `弹幕状态：${isDanmuConnected ? '已连接' : '未连接'}`;
-            statusText += ` | 播放器：${localStorage.getItem('obsCurrentPlayingSong') ? '已同步' : '未同步'}`;
-            statusText += ` | 队列总数：${songQueue.length}`;
-
-            playerStatusEl.textContent = statusText;
+    // 开始播放歌曲
+    window.startPlaying = function(id) {
+      // 先将所有歌曲设置为非播放中状态
+      songRequests.forEach(req => {
+        if (req.status === 'playing') {
+          req.status = 'completed';
         }
+      });
+      
+      // 设置选中的歌曲为播放中
+      const reqIndex = songRequests.findIndex(req => req.id === id);
+      if (reqIndex !== -1) {
+        songRequests[reqIndex].status = 'playing';
+        updateLocalStorage();
+        updateHostView();
+      }
+    };
 
-        // 添加弹幕日志
-        function addDanmuLog(message) {
-            const now = new Date();
-            const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+    // 完成歌曲
+    window.completeSong = function(id) {
+      const reqIndex = songRequests.findIndex(req => req.id === id);
+      if (reqIndex !== -1) {
+        songRequests[reqIndex].status = 'completed';
+        updateLocalStorage();
+        updateHostView();
+      }
+    };
 
-            danmuLogs.unshift(`[${timeStr}] ${message}`);
-            // 限制日志数量
-            if (danmuLogs.length > 20) {
-                danmuLogs.pop();
+    // 移除请求
+    window.removeRequest = function(id) {
+      songRequests = songRequests.filter(req => req.id !== id);
+      updateLocalStorage();
+      updateHostView();
+      updateRecentRequests();
+      updateHotSongs();
+    };
+
+    // 刷新列表
+    refreshListBtn.addEventListener('click', updateHostView);
+
+    // 清除已完成
+    clearCompletedBtn.addEventListener('click', () => {
+      songRequests = songRequests.filter(req => req.status !== 'completed');
+      updateLocalStorage();
+      updateHostView();
+    });
+
+    // 初始化图表
+    function initStatsChart() {
+      const ctx = document.getElementById('statsChart').getContext('2d');
+      
+      // 获取最近7天的数据
+      const dates = [];
+      const counts = [];
+      
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        const dateStr = date.toISOString().split('T')[0];
+        dates.push(dateStr.substring(5)); // 只显示月-日
+        
+        counts.push(statsData.dailyRequests[dateStr] || 0);
+      }
+      
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: '点歌数量',
+            data: counts,
+            borderColor: '#8B5CF6',
+            backgroundColor: 'rgba(139, 92, 246, 0.2)',
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: 'rgba(255, 255, 255, 0.7)'
+              }
+            },
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: 'rgba(255, 255, 255, 0.7)'
+              }
             }
-
-            // 更新日志显示
-            danmuLogEl.innerHTML = danmuLogs.join('<br>');
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
         }
+      });
+    }
 
-        // ==================== 播放器同步 ====================
-        function startPlayerSync() {
-            // 定时检查播放器状态（通过localStorage）
-            playerSyncTimer = setInterval(() => {
-                // 这里可以扩展：通过浏览器插件/桌面快捷指令更新localStorage中的播放器状态
-                const playerState = JSON.parse(localStorage.getItem('obsPlayerState') || '{"playing":false,"track":"","progress":""}');
-
-                // 如果有播放器状态，更新显示
-                if (playerState.track) {
-                    currentSongEl.textContent = `正在播放：${playerState.track}`;
-                    playerStatusEl.textContent = `弹幕状态：${isDanmuConnected ? '已连接' : '未连接'} | 播放器：${playerState.playing ? '播放中' : '已暂停'} | ${playerState.progress || ''}`;
+    // 初始化主播视图图表
+    function initHostCharts() {
+      // 点歌统计图表
+      const statsCtx = document.getElementById('hostStatsChart').getContext('2d');
+      
+      // 获取最近7天的数据
+      const dates = [];
+      const counts = [];
+      
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        const dateStr = date.toISOString().split('T')[0];
+        dates.push(dateStr.substring(5)); // 只显示月-日
+        
+        counts.push(statsData.dailyRequests[dateStr] || 0);
+      }
+      
+      new Chart(statsCtx, {
+        type: 'bar',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: '点歌数量',
+            data: counts,
+            backgroundColor: [
+              'rgba(236, 72, 153, 0.7)',
+              'rgba(139, 92, 246, 0.7)',
+              'rgba(6, 182, 212, 0.7)',
+              'rgba(236, 72, 153, 0.7)',
+              'rgba(139, 92, 246, 0.7)',
+              'rgba(6, 182, 212, 0.7)',
+              'rgba(236, 72, 153, 0.7)'
+            ],
+            borderColor: [
+              'rgb(236, 72, 153)',
+              'rgb(139, 92, 246)',
+              'rgb(6, 182, 212)',
+              'rgb(236, 72, 153)',
+              'rgb(139, 92, 246)',
+              'rgb(6, 182, 212)',
+              'rgb(236, 72, 153)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: 'rgba(255, 255, 255, 0.7)'
+              }
+            },
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: 'rgba(255, 255, 255, 0.7)'
+              }
+            }
+          }
+        }
+      });
+      
+      // 歌手统计图表
+      const artistCtx = document.getElementById('artistChart').getContext('2d');
+      
+      // 统计歌手出现次数
+      const artistCounts = {};
+      songRequests.forEach(req => {
+        artistCounts[req.artist] = (artistCounts[req.artist] || 0) + 1;
+      });
+      
+      // 转换为数组并排序
+      const artistData = Object.entries(artistCounts)
+        .map(([artist, count]) => ({ artist, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 8);
+      
+      new Chart(artistCtx, {
+        type: 'doughnut',
+        data: {
+          labels: artistData.map(a => a.artist),
+          datasets: [{
+            data: artistData.map(a => a.count),
+            backgroundColor: [
+              'rgba(236, 72, 153, 0.7)',
+              'rgba(139, 92, 246, 0.7)',
+              'rgba(6, 182, 212, 0.7)',
+              'rgba(52, 211, 153, 0.7)',
+              'rgba(249, 115, 22, 0.7)',
+              'rgba(234, 179, 8, 0.7)',
+              'rgba(16, 185, 129, 0.7)',
+              'rgba(139, 92, 246, 0.7)'
+            ],
+            borderColor: [
+              'rgb(236, 72, 153)',
+              'rgb(139, 92, 246)',
+              'rgb(6, 182, 212)',
+              'rgb(52, 211, 153)',
+              'rgb(249, 115, 22)',
+              'rgb(234, 179, 8)',
+              'rgb(16, 185, 129)',
+              'rgb(139, 92, 246)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: {
+                color: 'rgba(255, 255, 255, 0.7)',
+                font: {
+                  size: 11
                 }
-
-            }, 2000);
+              }
+            }
+          }
         }
+      });
+    }
 
-        // 暴露函数到全局
-        window.playSong = playSong;
-        window.deleteSong = deleteSong;
-    </script>
+    // 初始化
+    function init() {
+      updateRecentRequests();
+      updateHotSongs();
+      initStatsChart();
+      
+      // 模拟一些初始数据（如果没有本地存储数据）
+      if (songRequests.length === 0) {
+        const mockRequests = [
+          {
+            id: '1',
+            title: '起风了',
+            artist: '买辣椒也用券',
+            requestedBy: '音乐小达人',
+            requestTime: new Date(Date.now() - 3600000).toISOString(),
+            status: 'completed',
+            requestType: 'form'
+          },
+          {
+            id: '2',
+            title: '海阔天空',
+            artist: 'Beyond',
+            requestedBy: '摇滚青年',
+            requestTime: new Date(Date.now() - 7200000).toISOString(),
+            status: 'pending',
+            requestType: 'form'
+          },
+          {
+            id: '3',
+            title: '成都',
+            artist: '赵雷',
+            requestedBy: '流浪诗人',
+            requestTime: new Date(Date.now() - 10800000).toISOString(),
+            status: 'pending',
+            requestType: 'danmaku'
+          }
+        ];
+        
+        songRequests = mockRequests;
+        updateLocalStorage();
+        updateRecentRequests();
+        updateHotSongs();
+        updateStats();
+      }
+      
+      // 模拟弹幕
+      setInterval(() => {
+        const randomComments = [
+          '主播唱得真好听！',
+          '这首歌太经典了',
+          '求唱周杰伦的歌',
+          '主播好厉害！',
+          '这个旋律太美了',
+          '点歌 晴天 - 周杰伦',
+          '点歌 告白气球 - 周杰伦',
+          '主播声音好好听',
+          '这首歌我也会唱',
+          '太好听了吧！'
+        ];
+        
+        const randomComment = randomComments[Math.floor(Math.random() * randomComments.length)];
+        const mockDanmaku = {
+          id: Date.now().toString(),
+          user: generateRandomName(),
+          content: randomComment,
+          timestamp: new Date(),
+          isSongRequest: randomComment.startsWith('点歌'),
+          parsedSong: null
+        };
+        
+        if (mockDanmaku.isSongRequest) {
+          const match = randomComment.match(/点歌\s+(.+?)\s*[-–—]\s*(.+)/);
+          if (match) {
+            mockDanmaku.parsedSong = {
+              title: match[1].trim(),
+              artist: match[2].trim()
+            };
+          }
+        }
+        
+        displayDanmaku(mockDanmaku);
+      }, 3000);
+    }
+
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
 </body>
 </html>
